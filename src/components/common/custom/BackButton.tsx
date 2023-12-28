@@ -6,7 +6,8 @@ import React from "react";
 type Props = {};
 
 const BackButton = (props: Props) => {
-  const router = useRouter();
+  const router
+   = useRouter();
 
   return (
     <button
