@@ -1,3 +1,7 @@
+type Obj = {
+    [ key : string] : any
+}
+
 // user data type
 type AddressType = {
     Country : string,

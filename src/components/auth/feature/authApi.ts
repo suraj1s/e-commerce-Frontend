@@ -7,12 +7,12 @@ export async function createUser(userData : UserType) : Promise<CreateUserType> 
         },
         body: JSON.stringify(userData),
       });
-      const data = await response.json();
-      resolve({ data });
+      const data : CreateUserType = await response.json();
+      resolve( data );
     });
   }
   
-  export async function checkUser(userData : UserType): Promise<CheckUserType> {
+  export async function checkUser(userData : UserType) {
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/login`, {
@@ -34,7 +34,7 @@ export async function createUser(userData : UserType) : Promise<CreateUserType> 
     });
   }
   
-  export async function forgotPasswordRequest(data: { email: string }) : Promise<ForgotPasswordRequestType>{
+  export async function forgotPasswordRequest(data: { email: string }) {
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/forgot-password-request/`, {
@@ -57,7 +57,7 @@ export async function createUser(userData : UserType) : Promise<CreateUserType> 
       }
     });
   }
-  export async function resetPassword(data : UserType) : Promise<ResetPasswordType>{
+  export async function resetPassword(data : UserType) {
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/reset-password/`, {
@@ -82,7 +82,7 @@ export async function createUser(userData : UserType) : Promise<CreateUserType> 
   }
   
   
-  export async function checkAuthToken() : Promise<CheckUserType> {
+  export async function checkAuthToken() {
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/login`);

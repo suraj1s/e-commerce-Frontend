@@ -32,7 +32,7 @@ const SignIn = () => {
   return (
       <div>
         {/* {user && <Navigate to='/' replace={true} /> }  */}
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto h-20 w-auto"
@@ -48,7 +48,8 @@ const SignIn = () => {
         <form noValidate className="space-y-6"onSubmit={ handleSubmit((data ) =>
         //  dispatch(checkUserAsync({email:data.email , password : data.password}))
          console.log(data)
-  )}>            <div>
+  )}>  
+            <div>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900  dark:text-gray-300"

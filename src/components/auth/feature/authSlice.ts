@@ -21,12 +21,11 @@ const initialState : InitailStateType = {
   status: 'idle',
 };
 
-export const createUserAsync = createAsyncThunk(
+const createUserAsync = createAsyncThunk<CreateUserType, UserType>(
   'auth/createUser',
-  async (userData : UserType )  => {
-    const response  = await createUser(userData);
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
+  async (userData) => {
+    const response = await createUser(userData);
+    return response; // Assuming createUser returns a UserType
   }
 );
 export const checkUserAsync = createAsyncThunk(
@@ -116,7 +115,7 @@ export const authSlice = createSlice({
       .addCase(createUserAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(createUserAsync.fulfilled, (state, action : PayloadAction<UserType> ) => {
+      .addCase(createUserAsync.fulfilled, (state, action : PayloadAction<CreateUserType> ) => {
         state.status = 'idle';
         state.logedInUser = action.payload;
       })
