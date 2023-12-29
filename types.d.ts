@@ -1,58 +1,97 @@
+// user data type
+type AddressType = {
+    Country : string,
+    StreetAddress : string,
+    StateOrProvince : string
+    ZIPorPostalCode : number,
+    }
+    
+type UserType = {
+    name ?: string,
+    token ? : string,
+    email ? : string,
+    password ?: string,
+    role ?: string,
+    phone ?: number,
+    address ?: AddressType,
+    }
 
-type brand  = {
-    value : string,
-    label : string,
-    id: string,
-}
-type category  = {
-    value : string,
-    label : string,
-    id: string,
-}
+type ErrorType = {
+    message : string,
+    }
 
-type product = {
-    id : string,
-    title : string,
-    description : string,
-    price : number,
-    discountPercentage : number,
-    rating : number,
-    stock : number,
-    brand : brand,
-    category : string,
-    thumbnail : string,
-    images : string[],
-    highlights : string[],
-    colors : any[],
-    sizes : any[],
-    deleted : boolean,
+// auth endpoint return data type 
+type CreateUserType = {
+    token : string,
 }
-
-type user = {
-    name : string,
-    email : string,
-    password : string,
+type CheckUserType = {
+    token : string,
+}
+type GetUserType = {
     role : string,
 }
 
-type cart = {
-    product : product,
-    user : user,
-    quantity : number,
-    sizes : any[],
-    color : any[],
+type ForgotPasswordRequestType = {
+    success : string,
+}
+type ResetPasswordType = {
+    token : string,
+}
+type GetUserType = {
+    role : string,
 }
 
-type order = {
-    id : string,
-    user : user,
-    selectedAddress : any,
-    totalItems : number,
-    totalPrice : number,
-    paymentMethod : string,
-    orderStatus : string,
-    paymentStatus : string,
-    createdAt : string,
-    updatedAt : string,
-}
+
+
+
+
+// type brand  = {
+//     value : string,
+//     label : string,
+//     id: string,
+// }
+// type category  = {
+//     value : string,
+//     label : string,
+//     id: string,
+// }
+
+// type product = {
+//     id : string,
+//     title : string,
+//     description : string,
+//     price : number,
+//     discountPercentage : number,
+//     rating : number,
+//     stock : number,
+//     brand : brand,
+//     category : string,
+//     thumbnail : string,
+//     images : string[],
+//     highlights : string[],
+//     colors : any[],
+//     sizes : any[],
+//     deleted : boolean,
+// }
+
+// type cart = {
+//     product : product,
+//     user : user,
+//     quantity : number,
+//     sizes : any[],
+//     color : any[],
+// }
+
+// type order = {
+//     id : string,
+//     user : user,
+//     selectedAddress : any,
+//     totalItems : number,
+//     totalPrice : number,
+//     paymentMethod : string,
+//     orderStatus : string,
+//     paymentStatus : string,
+//     createdAt : string,
+//     updatedAt : string,
+// }
 

@@ -1,9 +1,19 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SignOut, checkAuthToken, checkUser, createUser, forgotPasswordRequest, resetPassword } from './authApi';
 
-const initialState = {
+interface InitailStateType {
+  value: number;
+  logedInUser: UserType | null;
+  tokenCheck: boolean;
+  forgotPassword: any;
+  resetPassword: any;
+  error: any;
+  status: string;
+}
+
+const initialState : InitailStateType = {
   value: 0,
-  logedInUser: null,
+  logedInUser: null ,
   tokenCheck: false,
   forgotPassword: null,
   resetPassword: null,
@@ -13,15 +23,15 @@ const initialState = {
 
 export const createUserAsync = createAsyncThunk(
   'auth/createUser',
-  async (userData) => {
-    const response : any = await createUser(userData);
+  async (userData : UserType )  => {
+    const response  = await createUser(userData);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 export const checkUserAsync = createAsyncThunk(
   'auth/checkUser',
-  async (userData , {rejectWithValue}) => {
+  async (userData : UserType , {rejectWithValue}) => {
     try{
       const response : any = await checkUser(userData);
       // The value we return becomes the `fulfilled` action payload
@@ -36,7 +46,7 @@ export const checkUserAsync = createAsyncThunk(
 );
 export const forgotPasswordRequestAsync = createAsyncThunk(
   'auth/forgotPasswordRequest',
-  async (data , {rejectWithValue}) => {
+  async (data : {email : string} , {rejectWithValue}) => {
     try{
       const response : any = await forgotPasswordRequest(data);
       // The value we return becomes the `fulfilled` action payload
@@ -51,7 +61,7 @@ export const forgotPasswordRequestAsync = createAsyncThunk(
 );
 export const resetPasswordAsync = createAsyncThunk(
   'auth/resetPassword',
-  async (data , {rejectWithValue}) => {
+  async (data : UserType , {rejectWithValue}) => {
     try{
       const response : any = await resetPassword(data);
       // The value we return becomes the `fulfilled` action payload
@@ -106,7 +116,7 @@ export const authSlice = createSlice({
       .addCase(createUserAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(createUserAsync.fulfilled, (state, action : PayloadAction<any> ) => {
+      .addCase(createUserAsync.fulfilled, (state, action : PayloadAction<UserType> ) => {
         state.status = 'idle';
         state.logedInUser = action.payload;
       })
@@ -114,7 +124,7 @@ export const authSlice = createSlice({
         state.status = 'loading';
       })
   
-      .addCase(checkUserAsync.fulfilled, (state, action : PayloadAction<any> ) => {
+      .addCase(checkUserAsync.fulfilled, (state, action : PayloadAction<UserType> ) => {
         state.status = 'idle';
         state.logedInUser = action.payload;
       })

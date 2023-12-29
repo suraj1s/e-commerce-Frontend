@@ -7,6 +7,11 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+interface loginDataType {
+    email: string;
+    password: string;
+}
+
 const SignIn = () => {
     const dispatch = useDispatch()
     const user = useSelector(selectLoggedInUser)
@@ -15,8 +20,8 @@ const SignIn = () => {
     const [userRole, setUserRole] = useState("")
 
     const handelDemoLogin = ({email  , password } : { email : string , password : string  } ) => {
-      dispatch(checkUserAsync({email , password }))
-      setUserRole(role);
+    //   dispatch(checkUserAsync({email , password }))
+    //   setUserRole(role);
     }
     
     const {
@@ -40,7 +45,9 @@ const SignIn = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form noValidate className="space-y-6"onSubmit={ handleSubmit((data) => dispatch(checkUserAsync({email:data.email , password : data.password}))
+        <form noValidate className="space-y-6"onSubmit={ handleSubmit((data ) =>
+        //  dispatch(checkUserAsync({email:data.email , password : data.password}))
+         console.log(data)
   )}>            <div>
               <label
                 htmlFor="email"

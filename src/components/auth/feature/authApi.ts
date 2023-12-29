@@ -1,4 +1,4 @@
-export async function createUser(userData : any) {
+export async function createUser(userData : UserType) : Promise<CreateUserType> {
     return new Promise(async (resolve) => {
       const response = await  fetch(`http://localhost:8080//api/auth/signup`, {
         method: "POST",
@@ -12,7 +12,7 @@ export async function createUser(userData : any) {
     });
   }
   
-  export async function checkUser(userData : any) {
+  export async function checkUser(userData : UserType): Promise<CheckUserType> {
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/login`, {
@@ -26,15 +26,15 @@ export async function createUser(userData : any) {
           const data = await checkemail.json();
           resolve({ data });
         } else {
-          reject({ error: "invalid credentials" });
+          reject({ message: "invalid credentials" });
         }
       } catch (err) {
-        reject({ error: "invalid credentials" });
+        reject({ message: "invalid credentials" });
       }
     });
   }
   
-  export async function forgotPasswordRequest(data: any) {
+  export async function forgotPasswordRequest(data: { email: string }) : Promise<ForgotPasswordRequestType>{
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/forgot-password-request/`, {
@@ -49,7 +49,7 @@ export async function createUser(userData : any) {
           resolve({ data });
           // console.log(data);
         } else {
-          const error = await checkemail.json();
+          const error  : ErrorType = await checkemail.json();
           reject({ error });
         }
       } catch (error) {
@@ -57,7 +57,7 @@ export async function createUser(userData : any) {
       }
     });
   }
-  export async function resetPassword(data : any) {
+  export async function resetPassword(data : UserType) : Promise<ResetPasswordType>{
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/reset-password/`, {
@@ -72,7 +72,7 @@ export async function createUser(userData : any) {
           resolve({ data });
           // console.log(data);
         } else {
-          const error = await checkemail.json();
+          const error  :ErrorType = await checkemail.json();
           reject({ error });
         }
       } catch (error) {
@@ -82,7 +82,7 @@ export async function createUser(userData : any) {
   }
   
   
-  export async function checkAuthToken() {
+  export async function checkAuthToken() : Promise<CheckUserType> {
     return new Promise(async (resolve, reject) => {
       try {
         const checkemail = await  fetch(`http://localhost:8080//api/auth/login`);
@@ -90,7 +90,7 @@ export async function createUser(userData : any) {
           const data = await checkemail.json();
           resolve({ data });
         } else {
-          const error = await checkemail.json();
+          const error  :ErrorType = await checkemail.json();
           reject({ error });
         }
       } catch (error) {
@@ -107,7 +107,7 @@ export async function createUser(userData : any) {
         if (signout.ok) {
           resolve({ data : "success" });
         } else {
-          const error = await signout.json();
+          const error  :ErrorType = await signout.json();
           reject({ error });
         }
       } catch (error) {
