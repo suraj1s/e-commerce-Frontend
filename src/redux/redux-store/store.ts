@@ -5,10 +5,11 @@ import {
     configureStore,
     ThunkAction
   } from "@reduxjs/toolkit"
-  
+  import authUser from "@/redux/redux-slices/auth/authSlice"
+
   const combineReducer = combineReducers({
     // reducers 
-
+    authUser,
     [apiSlice.reducerPath]: apiSlice.reducer
   })
   

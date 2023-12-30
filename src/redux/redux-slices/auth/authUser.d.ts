@@ -3,8 +3,6 @@ interface AuthInitailStateType {
     logedInUser: UserType | null;
     tokenCheck: boolean;
     forgotPassword: any;
-    error: any;
-    status: string;
   }
 
 type AddressType = {
