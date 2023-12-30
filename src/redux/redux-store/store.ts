@@ -1,15 +1,13 @@
+import { apiSlice } from "@/api/apiSlice"
 import {
     Action,
     combineReducers,
     configureStore,
     ThunkAction
   } from "@reduxjs/toolkit"
-  import { apiSlice } from "../../api/apiSlice"
-//   import permissionSlice from "../redux-slices/permission/permissionSlice"
   
   const combineReducer = combineReducers({
-    // reducers
-    tableData: permissionSlice,
+    // reducers 
 
     [apiSlice.reducerPath]: apiSlice.reducer
   })
