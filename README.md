@@ -18,6 +18,7 @@ useLazy...Query :
 providesTags :
 prepareHeaders:
 tagTypes:
+.injectEndpoints :
 
 const baseQuery = fetchBaseQuery({
   baseUrl: backendurl,
