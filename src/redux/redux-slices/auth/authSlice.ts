@@ -8,7 +8,6 @@ const initialState : AuthInitailStateType = {
     forgotPassword: null,
   };
 
-
 const authUser = createSlice({
   name: "authUser",
   initialState,

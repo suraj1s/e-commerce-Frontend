@@ -5,14 +5,19 @@ interface AuthInitailStateType {
     forgotPassword: any;
   }
 
-type AddressType = {
+interface SignInDataType {
+    email : string,
+    password : string,
+}
+
+interface AddressType {
     Country : string,
     StreetAddress : string,
     StateOrProvince : string
     ZIPorPostalCode : number,
     }
     
-type UserType = {
+interface UserType {
     name ?: string,
     token ? : string,
     email ? : string,
@@ -22,27 +27,27 @@ type UserType = {
     address ?: AddressType,
     }
 
-type ErrorType = {
+interface ErrorType {
     message : string,
     }
 
 // auth endpoint return data type 
-type CreateUserType = {
+interface CreateUserType {
     token : string,
 }
-type CheckUserType = {
+interface CheckUserType {
     token : string,
 }
-type GetUserType = {
+interface GetUserType {
     role : string,
 }
 
-type ForgotPasswordRequestType = {
+interface ForgotPasswordRequestType {
     success : string,
 }
-type ResetPasswordType = {
+interface ResetPasswordType {
     token : string,
 }
-type GetUserType = {
+interface GetUserType {
     role : string,
 }
