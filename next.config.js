@@ -1,54 +1,54 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-  reactStrictMode: false,
-  // images: {
-  //   domains: ["127.0.0.1:8000"]
-  // },
-  experimental: {
-    outputStandalone: true
+  reactStrictMode: true,
+  images: {
+    domains: ["127.0.0.1"],
   },
-  env: {
-    BACKEND_URL: process.env.BACKEND_URL
-  },
+  env: {},
   eslint: {
-    ignoreDuringBuilds: true
+    ignoreDuringBuilds: true,
   },
   generateEtags: false,
   webpack(config) {
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg"),
+    );
+
     config.module.rules.push(
       {
         test: /\.svg$/i,
         type: "asset",
-        resourceQuery: /url/
+        resourceQuery: /url/,
       },
       {
         test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
+        issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [/url/] },
-        use: [{ loader: "@svgr/webpack", options: { icon: true } }]
-      }
-    )
-    return config
+        use: ["@svgr/webpack"],
+      },
+    );
+    return config;
   },
   async headers() {
     return [
       {
         source: "/:path*",
-        headers: securityHeaders
-      }
-    ]
-  }
-}
+        headers: securityHeaders,
+      },
+    ];
+  },
+};
 
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
-    value: "frame-ancestors https://magic.store"
+    value: "frame-ancestors https://magic.store",
   },
   {
     key: "Cache-Control",
-    value: "no-store"
-  }
-]
+    value: "no-store",
+  },
+];
 
-module.exports = nextConfig
+module.exports = nextConfig;

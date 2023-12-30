@@ -10,6 +10,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl: backendurl,
 })
 export const apiSlice = createApi({
+  reducerPath: "apiSlice",
   baseQuery,
   tagTypes: [
     "authUser",

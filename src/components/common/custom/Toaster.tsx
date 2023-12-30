@@ -13,12 +13,12 @@ export const toaster = (type: any, message: any) => {
             <div className="flex justify-between ">
               <div className="flex items-start">
                 <div className="flex flex-col gap-1 p-2 ">
-                  <p className="flex items-center gap-2 font-gilroy text-base  font-semibold">
+                  <p className="flex items-center gap-2  text-base  font-semibold">
                     <AlertErrorIcon />
                     Error
                   </p>
                   <div className="flex items-center gap-2 text-xl">
-                    <p className="font-gilroy text-sm font-medium  text-white ">
+                    <p className=" text-sm font-medium  text-white ">
                       {message}
                     </p>
                   </div>
@@ -45,11 +45,11 @@ export const toaster = (type: any, message: any) => {
             <div className="flex justify-between">
               <div className="flex items-start">
                 <div className="flex flex-col gap-1 p-2 ">
-                  <p className="flex items-center gap-2 font-gilroy text-base font-semibold">
+                  <p className="flex items-center gap-2  text-base font-semibold">
                     <AlertSuccessIcon /> Success
                   </p>
                   <div className="flex items-center gap-2 text-xl">
-                    <p className="font-gilroy text-sm font-medium   text-white ">
+                    <p className=" text-sm font-medium   text-white ">
                       {message}
                     </p>
                   </div>

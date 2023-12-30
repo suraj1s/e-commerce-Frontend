@@ -1,3 +1,4 @@
+"use client"
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { Logo } from "@/assets/images";
