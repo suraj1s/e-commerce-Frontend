@@ -2,48 +2,6 @@ type Obj = {
     [ key : string] : any
 }
 
-// user data type
-type AddressType = {
-    Country : string,
-    StreetAddress : string,
-    StateOrProvince : string
-    ZIPorPostalCode : number,
-    }
-    
-type UserType = {
-    name ?: string,
-    token ? : string,
-    email ? : string,
-    password ?: string,
-    role ?: string,
-    phone ?: number,
-    address ?: AddressType,
-    }
-
-type ErrorType = {
-    message : string,
-    }
-
-// auth endpoint return data type 
-type CreateUserType = {
-    token : string,
-}
-type CheckUserType = {
-    token : string,
-}
-type GetUserType = {
-    role : string,
-}
-
-type ForgotPasswordRequestType = {
-    success : string,
-}
-type ResetPasswordType = {
-    token : string,
-}
-type GetUserType = {
-    role : string,
-}
 
 
 
