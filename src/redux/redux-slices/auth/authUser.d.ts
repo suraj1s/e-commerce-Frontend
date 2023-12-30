@@ -41,7 +41,6 @@ interface CheckUserType {
 interface GetUserType {
     role : string,
 }
-
 interface ForgotPasswordRequestType {
     success : string,
 }
