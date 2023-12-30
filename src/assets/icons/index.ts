@@ -6,17 +6,12 @@ import MessageIcon from "./message.svg";
 import UsersIcon from "./users.svg";
 import UserXIcon from "./user-x.svg";
 import ArrowUp from "./ArrowUp.svg";
-import LeftRightArrorIcon from "./sidebar/left-right-arrow.svg";
-import HomeIcon from "./sidebar/home.svg";
-import PlusIcon from "./sidebar/plus.svg";
-import MinusIcon from "./sidebar/minus.svg";
-import UserIcon from "./sidebar/user.svg";
-import VolumeIcon from "./sidebar/volume.svg";
-import PieIcon from "./sidebar/pie-chart.svg";
-import SettingIcon from "./sidebar/setting.svg";
-import DeveloperIcon from "./sidebar/developer.svg";
-import HelpCircleIcon from "./sidebar/help-circle.svg";
-import LayersIcon from "./sidebar/layers.svg";
+import LeftRightArrorIcon from "./left-right-arrow.svg";
+import PlusIcon from "./plus.svg";
+import MinusIcon from "./minus.svg";
+import UserIcon from "./user.svg";
+import SettingIcon from "./setting.svg";
+import HomeIcon from "./home.svg";
 import NotificationIcon from "./Notification.svg";
 import ArrowDownIcon from "./arrow-down.svg";
 import ExportIcon from "./export.svg";
@@ -79,7 +74,6 @@ export {
   SmartPhoneIcon,
   ArrowUpRightIcon,
   ZapIcon,
-  DeveloperIcon,
   XIcon,
   CheckCircleIcon,
   BarChartIcon,
@@ -105,11 +99,7 @@ export {
   PlusIcon,
   MinusIcon,
   UsersIcon,
-  VolumeIcon,
-  PieIcon,
   SettingIcon,
-  HelpCircleIcon,
-  LayersIcon,
   ExportIcon,
   ThreeDot,
   ArrowLeft,

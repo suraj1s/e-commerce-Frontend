@@ -2,11 +2,16 @@
 interface AuthInitailStateType {
     logedInUser: UserType | null;
     tokenCheck: boolean;
-    forgotPassword: any;
   }
 
 interface SignInDataType {
     email : string,
+    password : string,
+}
+
+interface ResetPasswordType {
+    email : string,
+    token : string,
     password : string,
 }
 
@@ -32,21 +37,21 @@ interface ErrorType {
     }
 
 // auth endpoint return data type 
-interface CreateUserType {
-    token : string,
-}
-interface CheckUserType {
-    token : string,
-}
-interface GetUserType {
-    role : string,
-}
-interface ForgotPasswordRequestType {
-    success : string,
-}
-interface ResetPasswordType {
-    token : string,
-}
-interface GetUserType {
-    role : string,
-}
+// interface CreateUserType {
+//     token : string,
+// }
+// interface CheckUserType {
+//     token : string,
+// }
+// interface GetUserType {
+//     role : string,
+// }
+// interface ForgotPasswordRequestType {
+//     success : string,
+// }
+// interface ResetPasswordType {
+//     token : string,
+// }
+// interface GetUserType {
+//     role : string,
+// }

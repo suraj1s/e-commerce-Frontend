@@ -2,7 +2,6 @@
 import { EyeIcon } from "@/assets/icons";
 import React, { useState } from "react";
 
-
 export type inputField = {
   title?: string,
   className?: string,
@@ -30,7 +29,6 @@ export type inputField = {
   titleclassName?: string;
   autoFocus?: boolean;
   inputClassName?: string;
-
 }
 
 type Prop = {
