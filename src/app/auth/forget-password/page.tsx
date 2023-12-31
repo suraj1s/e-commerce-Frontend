@@ -19,27 +19,10 @@ const inputTypeDetails : inputField[] = [
     message: "plese enter a valid email "
   }}
   },
-  {
-    title: "Password",
-    name: "password",
-    placeholder: "Enter your password",
 
-    // icon: <Status />,
-    type: "text",
-    validation:  {
-      required: " plese enter a valid password ",
-      pattern: {
-        value:
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-        message: `- at least 8 characters \n
-    - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number \n
-    - Can contain special characters`,
-      },
-    }
-  }
 ]
 
-const SignIn = () => {  
+const SignUp = () => {  
   const [checkUser , { isError , isLoading , isSuccess }] = useCheckUserMutation();
   const onsubmitHandler = async (data: any) => {
       // const formData = new FormData()
@@ -73,10 +56,10 @@ const SignIn = () => {
             alt="MERN E-commerce"
           />
           <h2 className="mt-10 text-center text-2xl font-bold  ">
-            Sign in to your account
+            Enter your email to forget password
           </h2>
         </div>
-        <div className="mt-10 ">
+        <div className="mt-5 ">
            <form
       onSubmit={handleSubmit(onsubmitHandler)}
       className="space-y-3 max-w-sm mx-auto "
@@ -88,22 +71,11 @@ const SignIn = () => {
                 inputfield={inputTypeDetails[0]}
                 register={register}
               />
-              <div>
-              <CustomInput
-                errors={errors}
-                inputfield={inputTypeDetails[1]}
-                register={register}
-              />
-              <Link href={"/auth/forget-password"} >
-              <p className="text-sm font-medium text-right text-primary-500 hover:text-primary-700 pt-2">
-                Forget your password?
-              </p>
-              </Link>
-              </div>
-             <CustomButton title="sign in" type="submit" />
+ 
+             <CustomButton title="forget password" type="submit" />
              <div className="flex gap-x-2 items-center">
-              <p>Don&lsquo;t have account  </p>
-              <Link href={"/auth/signup"} ><p className="text-primary-500  text-sm font-semibold"> Sign Up </p> </Link>
+              <p>Remember password?</p>
+              <Link href={"/auth/signin"} ><p className="text-primary-500  text-sm font-semibold"> Sign In </p> </Link>
              </div>
             </div>
        
@@ -115,4 +87,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

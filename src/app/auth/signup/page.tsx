@@ -91,7 +91,7 @@ const SignUp = () => {
             alt="MERN E-commerce"
           />
           <h2 className="mt-10 text-center text-2xl font-bold  ">
-            Sign in to your account
+            Sign up to your account
           </h2>
         </div>
         <div className="mt-10 ">
