@@ -2,7 +2,7 @@ import React from "react";
 
 const CommonCheckbox = () => {
   return (
-      <label className="container w-fit">
+      <label className="containerForCheckBox w-fit">
         <input  type="checkbox" />
         <div className="checkmark"></div>
       </label>

@@ -167,7 +167,7 @@
 
 /* checkbox  */
 /* Hide the default checkbox */
-.container input {
+.containerForCheckBox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -175,7 +175,7 @@
   width: 0;
 }
 
-.container {
+.containerForCheckBox {
   display: flex;
   gap: 10px;
 }
@@ -199,7 +199,7 @@
   box-sizing: border-box;
 }
 
-.container input:checked ~ .checkmark {
+.containerForCheckBox input:checked ~ .checkmark {
   box-shadow: var(--brand-600) 0px 0px 0px 2px;
   background-color: var(--brand-100);
   height: 16px;
@@ -222,12 +222,12 @@
   display: none;
 }
 
-.container input:checked ~ .checkmark:after {
+.containerForCheckBox input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.containerForCheckBox .checkmark:after {
   inset: 0px 0px 0px 0px;
   top: 1.5px;
   left: 5.5px;
