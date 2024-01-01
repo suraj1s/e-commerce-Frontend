@@ -41,7 +41,7 @@
 }
 
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root  {
     /* background */
     --background-500: rgb(4, 20, 42);
