@@ -26,10 +26,10 @@ const Header = () => {
   return (
     <div>
       <Image  src={Logo} alt='logo' className='h-20 w-20'/>
-      <div>
-        <p>Deliver Location</p>
+      <div className='flex flex-col gap-y-2 max-w-40'>
+        <p>Deliver to</p>
         <div>
-          <CustomDropDown options={countryOptions} popClassName='bg-gray-500' />
+          <CustomDropDown options={countryOptions}  />
         </div>
       </div>
     </div>

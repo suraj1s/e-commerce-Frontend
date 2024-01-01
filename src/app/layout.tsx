@@ -6,7 +6,7 @@ import Providers from '@/redux/redux-store/Providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'NextGen E-commerce',
+  title: 'create next app',
   description: 'Build using nextJs and typescript',
 }
 
