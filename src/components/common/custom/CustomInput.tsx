@@ -70,7 +70,7 @@ const CustomInput = ({
           style={{
             boxShadow: "0px 1px 2px 0px rgba(14, 24, 41, 0.05)",
           }}
-          className={`${inputfield.className} rounded-xl border-[1px] border-gray-300 bg-white shadow-lg relative flex w-full items-center gap-3 overflow-hidden px-[14px] py-[10px]`}
+          className={`${inputfield.className} customInputCSS relative flex w-full items-center gap-3 overflow-hidden px-[14px] py-[10px]`}
         >
           {inputfield.icon && <div className="text-lg">{inputfield.icon}</div>}
           <input

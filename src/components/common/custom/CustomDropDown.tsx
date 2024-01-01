@@ -39,7 +39,8 @@ const CustomDropDown = ({
     if (defaultValue) {
       setActive(defaultValue);
     }
-  }, [defaultValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <input

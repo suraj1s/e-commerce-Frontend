@@ -11,7 +11,7 @@ const config: Config = {
     darkMode: 'class',
     extend: {
       colors: {
-        background: "var(--background-500)",
+        background: "var(--background-primary)",
         primary: {
           100: "var(--primary-100)",
           500: "var(--primary-500)",
@@ -52,6 +52,34 @@ const config: Config = {
           600: "var(--error-600)",
           500: "var(--error-500)",
           700: "var(--error-700)",
+        },
+        brand: {
+          50: "var(--brand-50)",
+          100: "var(--brand-100)",
+          300: "var(--brand-300)",
+          400: "var(--brand-400)",
+          500: "var(--brand-500)",
+          600: "var(--brand-600)",
+          700: "var(--brand-700)",
+          800: "var(--brand-800)",
+        },
+        warning: {
+          50: "var(--warning-50)",
+          100: "var(--warning-100)",
+          600: "var(--warning-600)",
+          700: "var(--warning-700)",
+        },
+        orange: {
+          600: "var(--orange-600)",
+        },
+        pink: {
+          50: "var(--pink-50)",
+          600: "var(--pink-600)",
+          700: "var(--pink-700)",
+        },
+        indigo: {
+          50: "var(--indigo-50)",
+          700: "var(--indigo-700)",
         },
     
       },
