@@ -61,10 +61,10 @@ const CustomDropDown = ({
         onClose={() => {
           setIsOpen(false);
         }}
-        popClassName={`!w-full bottom-full ${popClassName}`}
+        popClassName={`!w-full top-full ${popClassName}`}
       >
         {options?.length > 1 && (
-          <div className="customInputCSS max-h-[200px] overflow-auto py-1">
+          <div className="customInputCSS max-h-[200px] overflow-auto py-1 ">
             {options?.map((item, index) => {
               return (
                 <button
