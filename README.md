@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+In the createAsyncThunk function, the generic types <typeA, typeB> define the types of the payload that the thunk returns and the argument it receives, respectively.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+rtk query 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# cacheing
+query will cache the data so we need to revalidate the mutated data
+for revalidation we need to use tags
+to use tage we need to provide tagsType before endpoint
+# tagsType ["string1" , "2" , "3]
+# there are two types of tags
+## provide : providesTags["string1" , "2"]
+## invaalidate : invalidatesTage["string1"]
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+useLazy...Query :
+providesTags :
+prepareHeaders:
+tagTypes:
+.injectEndpoints :
 
-## Learn More
+const baseQuery = fetchBaseQuery({
+  baseUrl: backendurl,
+  // credentials: "include",
+  prepareHeaders: (headers, { getState }) => {
+    const access_token = Cookies.get("access")
+    if (access_token) {
+      headers.set("authorization", `Bearer ${access_token}`)
+    }
+    return headers
+  }
+})
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const baseQueryWithReauth = async (
+  args: string | FetchArgs,
+  api: BaseQueryApi,
+  extraOptions: {}
+) => {
+  const result = await baseQuery(args, api, extraOptions)
+}
