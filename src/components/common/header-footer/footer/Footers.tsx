@@ -59,8 +59,8 @@ const Footers = () => {
     <div>
       <div className='w-full bg-gray-800 '>
         <div className='container'>
-        <Link href='/'>
-        <p className='font-bold text-gray-25 text-center '>
+        <Link href='/dashboard'>
+        <p className='font-bold text-gray-25 text-center py-2 '>
 
         Back to top
         </p>
