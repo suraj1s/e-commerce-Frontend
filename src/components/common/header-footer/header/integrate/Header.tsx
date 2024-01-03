@@ -7,13 +7,16 @@ import React from 'react'
 const Header = () => {
 
   return (
-    <div className=' flex flex-row gap-x-5 flex-shrink-0 container p-3  font-semibold text-gray-800 capitalize'>
+    <div className='bg-gray-900 text-gray-100'>
+    <div className=' flex flex-row gap-x-5 flex-shrink-0 container p-3  font-semibold  capitalize'>
       <Image  src={Logo} alt='logo' className='h-10 w-10'/>
       <p>welcome</p>
       <Search  placeholder='Search Product'  />
       <div> Profile</div>
       <div>Return and Order</div>
       <div>Cart</div>
+    </div>
+
     </div>
   )
 }

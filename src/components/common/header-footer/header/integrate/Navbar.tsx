@@ -2,7 +2,8 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className='flex container gap-x-5 font-semibold text-gray-800 capitalize'>
+    <div className='bg-gray-700 text-gray-300'>
+    <div className='flex container gap-x-5 font-semibold  capitalize'>
       <div>
         all
       </div>
@@ -15,6 +16,8 @@ const Navbar = () => {
       <div>
         most popular products
       </div>
+    </div>
+
     </div>
   )
 }
