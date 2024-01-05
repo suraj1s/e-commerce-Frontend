@@ -1,3 +1,4 @@
+import { ArrowRight } from '@/assets/icons'
 import Link from 'next/link'
 import React from 'react'
 
@@ -66,25 +67,29 @@ const SideNavbar = ({handelClose} : SideNavbarProp) => {
     ]
   return (
     <div className='relative  '>
-    <div className='fixed left-0 top-0   h-screen w-80 bg-gray-300 text-gray-800 z-20 '>
+    <div className='fixed left-0 top-0   h-screen w-80 bg-gray-100 text-gray-900 z-20 '>
         <div className='bg-gray-800 text-gray-300 font-bold text-xl  py-5 px-8'>
             hello User
         </div>
-        <div className='px-8 flex flex-col gap-y-4 '>
+        <div className=' flex flex-col gap-y-4 '>
         {
             sideNavbarItems.map((item , index) => (
                 <div key={index} className='flex flex-col gap-y-2'>
-                    <div>
+                    <div className='text-xl font-bold text-gray-800 px-8 pt-5'>
                         {item.mainTitle}
                     </div>
                     <div>
                         {
                             item?.items.map( (item , index) => (
                                 <div key={index}>
-                                    <div>
+                                    <div className='text-lg font-bold text-gray-700 flex justify-between hover:bg-gray-300 hover:cursor-pointer px-8 py-2 '>
+                                        <h1>
                                         {item.itemTitle}
+
+                                        </h1>
+                                        <ArrowRight />
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         {
                                             item?.subItems.map((item , index) => (
                                                 <Link href={item.link} key={index} >
@@ -94,7 +99,7 @@ const SideNavbar = ({handelClose} : SideNavbarProp) => {
                                                 </Link>
                                             ))
                                         }
-                                    </div>
+                                    </div> */}
                                 </div>
                             ))
                         }
@@ -106,7 +111,6 @@ const SideNavbar = ({handelClose} : SideNavbarProp) => {
 
         </div>
     </div>
-    <div></div>
     <div  className='h-screen w-screen  fixed top-0 left-0 popupmodalblur z-10'  onClick={()=> handelClose(false)}/> 
     </div>
   )
