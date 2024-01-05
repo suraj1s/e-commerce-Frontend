@@ -1,81 +1,14 @@
 import { ArrowRight } from '@/assets/icons'
-import Link from 'next/link'
 import React, { useState } from 'react'
 import SideNavbarDetaildeView from './integrate/SideNavbarDetaildeView'
+import { sideNavbarItems } from '@/utils/NavbarItems'
 
 interface SideNavbarProp {
     handelClose : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const SideNavbar = ({handelClose} : SideNavbarProp) => {
-    const sideNavbarItems  = [
-        {
-            mainTitle : "Shop By Department",
-            items : [
-                {
-                    itemTitle : "Electronics",
-                    subItems : [
-                        {
-                            name  : "Mobiles",
-                            link : "/"
-                        },
-                        {
-                            name  : "Mobiles",
-                            link : "/"
-                        },
-                        {
-                            name  : "Mobiles",
-                            link : "/"
-                        },
-                        {
-                            name  : "Mobiles",
-                            link : "/"
-                        },
-                        {
-                            name  : "Mobiles",
-                            link : "/"
-                        },
-                    ]
-                },
-                {
-                    itemTitle : "Fashon",
-                    subItems : [
-                        {
-                            name  : "Shirt",
-                            link : "/"
-                        },
-                        {
-                            name  : "Pant",
-                            link : "/"
-                        },
-                        {
-                            name  : "Cap",
-                            link : "/"
-                        },
-                        {
-                            name  : "Pant",
-                            link : "/"
-                        },
-                        {
-                            name  : "Cap",
-                            link : "/"
-                        },
-                        {
-                            name  : "Pant",
-                            link : "/"
-                        },
-                        {
-                            name  : "Cap",
-                            link : "/"
-                        },
-                        
-                    ]
-                },
-            ]
-        },
-       
-    ]
-
+ 
     const [isSideNavbarLink , setIsSideNavbarLink] = useState(false)
   return (
     <div className='relative  '>
