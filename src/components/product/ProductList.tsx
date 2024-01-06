@@ -23,6 +23,8 @@ const ProductList = () => {
 
     console.log(products)
   return (
+    <>
+        <h1>All products</h1>
     <div className='flex flex-wrap  h-fit px-4 py-6 gap-y-10  gap-x-10'>
         {
             memoizedProducts?.map((item , index) => (
@@ -34,6 +36,7 @@ const ProductList = () => {
        
 
     </div>
+    </>
   )
 }
 

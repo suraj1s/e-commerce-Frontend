@@ -1,9 +1,11 @@
 "use client"
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ItemCart = ( {item} : { item : productType}) => {
    
   return (
+    <Link href={`/product/${item.id}`}>
         <div className='group w-[220px] bg-gray-200 p-3 rounded-lg border-[1px] border-gray-100 shadow-md  hover:scale-110 transition-all hover:cursor-pointer'>
             <div className='  rounded-md overflow-hidden'>
                 <Image src={item.thumbnail} alt={item.title} width={500} height={500} className='w-full h-40 object-cover group-hover:scale-110' />
@@ -23,6 +25,7 @@ const ItemCart = ( {item} : { item : productType}) => {
                 <p> rating {item.rating}</p>
         </div>
         </div>
+    </Link>
          )
 }
 
