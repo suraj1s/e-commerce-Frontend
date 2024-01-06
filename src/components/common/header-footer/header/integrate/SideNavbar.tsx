@@ -1,6 +1,6 @@
 import { ArrowRight } from '@/assets/icons'
 import React, { useState } from 'react'
-import SideNavbarDetaildeView from './integrate/SideNavbarDetaildeView'
+import SideNavbarDetaildeView from './SideNavbarDetaildeView'
 import { sideNavbarItems } from '@/utils/NavbarItems'
 
 interface SideNavbarProp {
