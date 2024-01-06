@@ -1,64 +1,29 @@
 "use client"
 import Image from 'next/image';
-import { use, useEffect, useMemo, useState } from 'react';
 
-interface productType  {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    rating: number;
-    stock: number;
-    brand: string;
-    category: string;
-    thumbnail: string;
-    images: string[];
-}
-
-const ItemCart = () => {
-    const [products, setProducts] = useState <productType[]>([])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch('https://dummyjson.com/products')
-            const data = await res.json()
-            console.log(data)
-            setProducts(data.products)
-            
-        }
-        fetchData()
-    } , [])
-
-    const memoizedProducts = useMemo(() => products, [products]);
-
-    console.log(products)
+const ItemCart = ( {item} : { item : productType}) => {
+   
   return (
-    <div className='flex flex-wrap  h-fit px-4 py-6 gap-y-10  gap-x-10'>
-        {
-            memoizedProducts?.map((item , index) => (
-                <div key={index} className='w-80 '>
-                    <div className='w-full '>
-                     <Image src={item.thumbnail} alt={item.title} width={500} height={500}/>
-
-                    </div>
-                    <div>
-                        <p>{item.title}</p>
-                        <p>{item.price}</p>
-                        <p>{item.discountPercentage}</p>
-                        <p>{item.brand}</p>
-                        <p>{item.category}</p>
-                        <p>{item.rating}</p>
-                        <p>{item.stock}</p>
-                        <p>{item.description}</p>
+        <div className='group w-[220px] bg-gray-200 p-3 rounded-lg border-[1px] border-gray-100 shadow-md '>
+            <div className='  rounded-md overflow-hidden'>
+                <Image src={item.thumbnail} alt={item.title} width={500} height={500} className='w-full h-40 object-cover group-hover:scale-110' />
+            </div>
+            <div className='text-sm font-medium flex flex-col gap-y-2 pt-3 '>
+                <p className='text-lg text-gray-800 font-bold '>
+                    <p className=' w-[185px] overflow-hidden whitespace-nowrap group-hover:w-full group-hover:whitespace-normal  '>
+                    { item.title} 
+                    </p>
+                </p>
+                <p>{item.price}</p>
+                <div className='flex gap-x-5'>
+                <p>{item.discountPercentage}</p>
+                <p>{item.discountPercentage}</p>
                 </div>
-                </div>
-            ))
-        }
-       
-
-    </div>
-  )
+                <p> low or out {item.stock}</p>
+                <p>{item.rating}</p>
+        </div>
+        </div>
+         )
 }
 
 export default ItemCart
