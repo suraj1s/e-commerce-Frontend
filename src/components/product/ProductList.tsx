@@ -1,7 +1,7 @@
 "use client"
-import Image from 'next/image';
 import {  useEffect, useMemo, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
+import { useGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
 
 
 
@@ -20,6 +20,9 @@ const ProductList = () => {
     } , [])
 
     const memoizedProducts = useMemo(() => products, [products]);
+    const [ getProduct ] = useGetProductsQuery();
+    const response: any =  getProduct()
+    console.log(response)
 
     console.log(products)
   return (

@@ -3,7 +3,8 @@ import {
   fetchBaseQuery
 } from "@reduxjs/toolkit/query/react"
 
-export const backendurl = process.env.BACKEND_URL || "http://127.0.0.1:8000/api/"
+export const backendurl = process.env.BACKEND_URL || "https://dummyjson.com/"
+// export const backendurl = process.env.BACKEND_URL || "http://127.0.0.1:8000/api/"
 // const backendurl = "http://192.168.1.131:8000/"
 
 const baseQuery = fetchBaseQuery({
@@ -15,6 +16,8 @@ export const apiSlice = createApi({
   tagTypes: [
     "authUser",
     "forgotPassword",
+    "product",
+    "productDetail",
   ],
   endpoints: (builder) => ({})
 })
