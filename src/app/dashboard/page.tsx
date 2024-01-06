@@ -1,4 +1,4 @@
-import ProductList from '@/components/dashboard/ProductList'
+import ProductList from '@/components/product/ProductList'
 import React from 'react'
 
 const page = () => {

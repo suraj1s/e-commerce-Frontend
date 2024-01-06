@@ -4,7 +4,7 @@ import Image from 'next/image';
 const ItemCart = ( {item} : { item : productType}) => {
    
   return (
-        <div className='group w-[220px] bg-gray-200 p-3 rounded-lg border-[1px] border-gray-100 shadow-md '>
+        <div className='group w-[220px] bg-gray-200 p-3 rounded-lg border-[1px] border-gray-100 shadow-md  hover:scale-110 transition-all hover:cursor-pointer'>
             <div className='  rounded-md overflow-hidden'>
                 <Image src={item.thumbnail} alt={item.title} width={500} height={500} className='w-full h-40 object-cover group-hover:scale-110' />
             </div>
@@ -16,11 +16,11 @@ const ItemCart = ( {item} : { item : productType}) => {
                 </p>
                 <p>{item.price}</p>
                 <div className='flex gap-x-5'>
-                <p>{item.discountPercentage}</p>
-                <p>{item.discountPercentage}</p>
+                <p className='line-through'>1000</p>
+                <p>-{item.discountPercentage}%</p>
                 </div>
                 <p> low or out {item.stock}</p>
-                <p>{item.rating}</p>
+                <p> rating {item.rating}</p>
         </div>
         </div>
          )
