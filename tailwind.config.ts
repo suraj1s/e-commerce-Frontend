@@ -91,6 +91,8 @@ const config: Config = {
         // h_lg: { raw: "(min-height: 800px)" },
         // h_xl: { raw: "(min-height: 900px)" },
         // h_2xl: { raw: "(min-height: 1000px)" },
+       "small-mobiles" : "320px",
+       // => @media (min-width: 320px) { ... }
 
       'mobile': '520px',
       // => @media (min-width: 520px) { ... }
