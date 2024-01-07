@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ItemCart = ( {item} : { item : productType}) => {
+const ItemCart = ( {item , index } : { item : productType , index : number}) => {
    
   return (
     <Link href={`/product/${item.id}`}>

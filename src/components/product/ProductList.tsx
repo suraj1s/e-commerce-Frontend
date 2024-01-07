@@ -1,34 +1,44 @@
 "use client"
-import { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
-import { useGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
+import { useLazyGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
-  const {data : productData} = useGetProductsQuery({});
+  const [pageLimit, setPageLimit] = useState(10)
+  const [pageNumber, setPageNumber] = useState(0)
+
+  const [ getProducts ,  {data : productData , isLoading}] = useLazyGetProductsQuery();
 
   useEffect(() => {
+    getProducts({
+      limit: pageLimit,  
+      currentPage : pageNumber
+    })
     if(productData){
-      setFinalProducts(productData.products)
+      setFinalProducts( [...finalProducts ,  ...productData.products])
     }
-  }, [productData])
-  
-  // const fetchMoreTrigger = useRef<HTMLDivElement>(null);
+  },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+      [productData , pageNumber, pageLimit ])
 
-  //   const elementRef = useRef<any>();
-  // const [position, setPosition] = useState<{x: number | undefined  , y: number | undefined} >({ x: 0, y: 0 });
+  const hasMore = pageNumber * 10 + 10 < productData?.total
 
-  // useEffect(() => {
-  //   function handleResize() {
-  //     const x = elementRef?.current?.offsetLeft;
-  //     const y = elementRef?.current?.offsetTop;
-  //     setPosition({ x, y });
-  //   }
 
-  //   handleResize(); // initial call to get position of the element on mount
-  //   window.addEventListener("scroll", handleResize);
-  //   return () => window.removeEventListener("scroll", handleResize);
-  // }, [elementRef]);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const lastItemElementRef = useCallback((node: HTMLElement | null) => {
+    if (isLoading) return;
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        setPageNumber(pageNumber + 1)
+      }
+    });
+
+    if (node) observer.current.observe(node);
+  }, [isLoading, hasMore  , pageNumber ]);
 
   return (
     <>
@@ -37,15 +47,19 @@ const ProductList = () => {
         {
             finalProducts?.map((item , index) => (
                 <div key={index} >
-                   <ItemCart item={item}/>
+                 { 
+                 finalProducts.length === index + 1 ? 
+                  <div ref={lastItemElementRef}>
+                        <ItemCart item={item} index = {index}/>
+                    </div>   
+                    :  
+                  <div>
+                        <ItemCart item={item} index = {index}/>
+                    </div>  }   
                 </div>
             ))
         }
     </div>
-    {/* <div className='flex fixed top-96 left-0  gap-x-5 text-xl font-bold '  ref={elementRef}>
-      <p>{position.x}</p>
-      <p>{position.y}</p>
-    </div> */}
     </>
   )
 }

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 
 const initialState : productStateType = {
-    limit: 10 ,
+    limit: 20 ,
     currentPage: 0,
     
   };
