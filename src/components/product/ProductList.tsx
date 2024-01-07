@@ -16,27 +16,21 @@ const ProductList = () => {
       currentPage : pageNumber
     })
     if(productData){
-      setFinalProducts( [...finalProducts ,  ...productData.products])
+      setFinalProducts(  [  ...finalProducts ,  ...productData.products])
     }
-  },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-      [productData , pageNumber, pageLimit ])
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [productData , pageNumber, pageLimit ])
 
   const hasMore = pageNumber * 10 + 10 < productData?.total
-
-
   const observer = useRef<IntersectionObserver | null>(null);
-
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
     if (isLoading) return;
     if (observer.current) observer.current.disconnect();
-
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore) {
         setPageNumber(pageNumber + 1)
       }
     });
-
     if (node) observer.current.observe(node);
   }, [isLoading, hasMore  , pageNumber ]);
 
@@ -58,7 +52,9 @@ const ProductList = () => {
                     </div>  }   
                 </div>
             ))
-        }
+          }
+          {
+          isLoading && <div className=' text-center py-5  text-black font-bold text-3xl'>Loading...</div>}
     </div>
     </>
   )
