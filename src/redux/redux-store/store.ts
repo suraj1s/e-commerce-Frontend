@@ -6,10 +6,12 @@ import {
     ThunkAction
   } from "@reduxjs/toolkit"
   import authUser from "@/redux/redux-slices/auth/authSlice"
+  import products from "@/redux/redux-slices/product/productSlice"
 
   const combineReducer = combineReducers({
     // reducers 
     authUser,
+    products,
     [apiSlice.reducerPath]: apiSlice.reducer
   })
   

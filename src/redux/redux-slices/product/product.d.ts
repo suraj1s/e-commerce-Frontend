@@ -11,3 +11,8 @@ interface productType  {
     thumbnail: string;
     images: string[];
 }
+
+interface productStateType {
+    limit : number;
+    currentPage : number;
+}
