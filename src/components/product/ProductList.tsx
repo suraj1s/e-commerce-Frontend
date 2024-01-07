@@ -1,47 +1,26 @@
 "use client"
-import {  useEffect, useMemo, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
 import { useGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
 
-
-
 const ProductList = () => {
-    const [products, setProducts] = useState <productType[]>([])
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch('https://dummyjson.com/products')
-            const data = await res.json()
-            console.log(data)
-            setProducts(data.products)
-            
-        }
-        fetchData()
-    } , [])
-
-    const memoizedProducts = useMemo(() => products, [products]);
-    const [ getProduct ] = useGetProductsQuery();
-    const response: any =  getProduct()
-    console.log(response)
-
-    console.log(products)
+    const {data : productData} = useGetProductsQuery({});
+    const finalProducts : productType[] = productData?.products
+    console.log(productData)
   return (
     <>
-        <h1>All products</h1>
-    <div className='flex flex-wrap  h-fit px-4 py-6 gap-y-10  gap-x-10'>
+    <h1>All products</h1>
+    <div className='grid grid-cols-1 mobile:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 h-fit mobile:px-4  mobile:py-6 gap-y-10 gap-x-10'>
         {
-            memoizedProducts?.map((item , index) => (
+            finalProducts?.map((item , index) => (
                 <div key={index} >
                    <ItemCart item={item}/>
                 </div>
             ))
         }
-       
-
     </div>
     </>
   )
 }
-
 export default ProductList
 

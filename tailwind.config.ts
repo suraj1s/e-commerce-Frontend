@@ -85,15 +85,32 @@ const config: Config = {
       },
 
       screens: {
-        h_xs: { raw: "(min-height: 500px)" },
-        h_sm: { raw: "(min-height: 600px)" },
-        h_md: { raw: "(min-height: 700px)" },
-        h_lg: { raw: "(min-height: 800px)" },
-        h_xl: { raw: "(min-height: 900px)" },
-        h_2xl: { raw: "(min-height: 1000px)" },
+        // h_xs: { raw: "(min-height: 500px)" },
+        // h_sm: { raw: "(min-height: 600px)" },
+        // h_md: { raw: "(min-height: 700px)" },
+        // h_lg: { raw: "(min-height: 800px)" },
+        // h_xl: { raw: "(min-height: 900px)" },
+        // h_2xl: { raw: "(min-height: 1000px)" },
 
-        // => @media (min-height: 800px) { ... }
+      'mobile': '520px',
+      // => @media (min-width: 520px) { ... }
+
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
       },
+      
       container: {
         center: true,
       },
