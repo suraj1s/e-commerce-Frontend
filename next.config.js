@@ -3,8 +3,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["127.0.0.1"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.dummyjson.com',
+      },
+    ],
   },
+
   env: {},
   eslint: {
     ignoreDuringBuilds: true,

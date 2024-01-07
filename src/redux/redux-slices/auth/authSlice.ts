@@ -16,7 +16,6 @@ const authUser = createSlice({
     },
     resetLoginedUser: (state) => {
         state.logedInUser = null;
-        console.log(state.logedInUser)
       },
     // any type of data can be added in redux store 
     //   state.data = [...state.data, ...action.payload ]

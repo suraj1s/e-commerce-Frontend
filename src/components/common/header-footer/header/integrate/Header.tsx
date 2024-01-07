@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className='bg-gray-900 text-gray-100'>
     <div className=' flex flex-col md:flex-row  flex-shrink-0 container p-3 items-center  font-semibold  capitalize '>
-      <div className='flex gap-x-5 items-center w-full justify-around  flex-shrink-0'>
+      <div className='flex small-mobiles:flex-nowrap flex-wrap text-xs mobile:text-sm  gap-x-5 items-center w-full justify-around  flex-shrink-0'>
       <Image  src={Logo} alt='logo' className='h-10 w-10'/>
       <p>welcome</p>
       <div className='hidden md:block w-full'>

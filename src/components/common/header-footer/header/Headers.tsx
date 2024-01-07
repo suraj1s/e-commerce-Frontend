@@ -4,7 +4,7 @@ import Navbar from './integrate/Navbar'
 
 const Headers = () => {
   return (
-    <div>
+    <div className='sticky top-0 '>
         <Header />
         <Navbar />
     </div>
