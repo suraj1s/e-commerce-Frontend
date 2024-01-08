@@ -5,37 +5,42 @@ import { useLazyGetProductsQuery } from '@/redux/redux-slices/product/apiService
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
-  const [pageLimit, setPageLimit] = useState(10)
+  const pageLimit = 10
   const [pageNumber, setPageNumber] = useState(0)
 
-  const [ getProducts ,  {data : productData , isLoading}] = useLazyGetProductsQuery();
+  const [ getProducts ,  {data : productData , isFetching}] = useLazyGetProductsQuery();
 
   useEffect(() => {
-    getProducts({
-      limit: pageLimit,  
-      currentPage : pageNumber
-    })
+     getProducts({
+        limit: pageLimit,  
+        currentPage :  pageNumber
+      })
+
+      }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [ pageNumber, pageLimit ])
+
+  useEffect(() => {
     if(productData){
       setFinalProducts(  [  ...finalProducts ,  ...productData.products])
     }
-  }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  [productData , pageNumber, pageLimit ])
+  },// eslint-disable-next-line react-hooks/exhaustive-deps
+   [productData])
+  
 
-  // for infinite scroll
-  const hasMore = pageNumber * 10 + 10 < productData?.total
+  // // for infinite scroll
+  const hasMore = ((pageNumber * 10) + 10 ) < productData?.total
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
-    if (isLoading) return;
+    if (isFetching) return;
     if (observer.current) observer.current.disconnect();
+    
     observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore) {
-        setPageNumber(pageNumber + 1)
+      if (entries[0].isIntersecting && hasMore && !isFetching) {
+        setPageNumber( (prev ) =>  prev + 1)
       }
     });
     if (node) observer.current.observe(node);
-  }, [isLoading, hasMore  , pageNumber ]);
-
-  
+  }, [   hasMore ,  isFetching]);
   return (
     <>
     <h1>All products</h1>
@@ -45,7 +50,9 @@ const ProductList = () => {
                 <div key={index} >
                  { 
                  finalProducts.length === index + 1 ? 
-                  <div ref={lastItemElementRef}>
+                  <div
+                   ref={lastItemElementRef}
+                    >
                         <ItemCart item={item} index = {index}/>
                     </div>   
                     :  
@@ -55,9 +62,10 @@ const ProductList = () => {
                 </div>
             ))
           }
-          {
-          isLoading && <div className=' text-center py-5  text-black font-bold text-3xl'>Loading...</div>}
+          
     </div>
+    {
+          isFetching && <div className=' text-center py-5  text-black font-bold text-3xl'>Loading...</div>}
     </>
   )
 }
