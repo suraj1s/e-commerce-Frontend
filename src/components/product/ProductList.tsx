@@ -2,6 +2,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
 import { useLazyGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
+import { useAppSelector } from '@/redux/redux-store/hooks';
+import { setProductSearchQuery } from '@/redux/redux-slices/product/productSlice';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
@@ -9,13 +11,14 @@ const ProductList = () => {
   const [pageNumber, setPageNumber] = useState(0)
 
   const [ getProducts ,  {data : productData , isFetching}] = useLazyGetProductsQuery();
+  const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
+  console.log(productSearchQuery)
 
   useEffect(() => {
      getProducts({
         limit: pageLimit,  
         currentPage :  pageNumber
       })
-
       }, // eslint-disable-next-line react-hooks/exhaustive-deps
   [ pageNumber, pageLimit ])
 
@@ -33,7 +36,6 @@ const ProductList = () => {
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
     if (isFetching) return;
     if (observer.current) observer.current.disconnect();
-    
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore && !isFetching) {
         setPageNumber( (prev ) =>  prev + 1)
@@ -49,16 +51,18 @@ const ProductList = () => {
             finalProducts?.map((item , index) => (
                 <div key={index} >
                  { 
-                 finalProducts.length === index + 1 ? 
+                 finalProducts.length === index + 1
+                  ? 
                   <div
                    ref={lastItemElementRef}
                     >
-                        <ItemCart item={item} index = {index}/>
+                       <ItemCart item={item} index = {index}/>
                     </div>   
                     :  
                   <div>
                         <ItemCart item={item} index = {index}/>
-                    </div>  }   
+                    </div>  
+                    }   
                 </div>
             ))
           }
