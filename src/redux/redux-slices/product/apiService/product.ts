@@ -17,18 +17,16 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }), 
         
       getProduct: builder.query({
-        query: ({productId } : {productId : number}) => ({
-          url: `products/${productId}}`,
+        query: (productId  : number) => ({
+          url: `products/${productId}`,
           method: "GET"
         }),
-        providesTags: ["product"]
+        providesTags: ["productDetail"]
     }),  
   })
 })
 
 export const {
-    useGetProductsQuery,
     useLazyGetProductsQuery,
     useGetProductQuery,
-    useLazyGetProductQuery,
 } = productApiSlice

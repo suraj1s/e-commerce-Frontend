@@ -3,12 +3,12 @@ import React from 'react'
 
 const page = ({params} : {params : {id: number}}) => {
   return (
-    <>
+    <div className='container'>
     <h1>
-      this is product detail page {params.id}
+      this is product detail page 
     </h1>
-    <ProductDetail productId = {params.id} />
-    </>
+    <ProductDetail id = {params.id} />
+    </div>
   )
 }
 
