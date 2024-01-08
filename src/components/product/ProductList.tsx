@@ -26,12 +26,14 @@ const ProductList = () => {
   // }, [productSearchQuery , logSearch])
   
   useEffect(() => {
-     getProducts({
-        limit: pageLimit,  
-        currentPage :  pageNumber,
-      })
+    if(productSearchQuery === "")  {
+      getProducts({
+         limit: pageLimit,  
+         currentPage :  pageNumber,
+       })
+    }
       }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  [ pageNumber, pageLimit ])
+  [ pageNumber, pageLimit  , productSearchQuery  ])
 
   useEffect(() => {
     if(productData ){
@@ -40,7 +42,7 @@ const ProductList = () => {
    [productData])
 
   useEffect(() => {
-    if(searchedProducts && productSearchQuery ){
+    if(searchedProducts  ){
       setFinalProducts( searchedProducts.products)    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
    [searchedProducts , productSearchQuery])
