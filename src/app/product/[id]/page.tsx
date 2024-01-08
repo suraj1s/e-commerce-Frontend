@@ -1,10 +1,14 @@
+import ProductDetail from '@/components/product/ProductDetail'
 import React from 'react'
 
 const page = ({params} : {params : {id: number}}) => {
   return (
-    <div>
+    <>
+    <h1>
       this is product detail page {params.id}
-    </div>
+    </h1>
+    <ProductDetail productId = {params.id} />
+    </>
   )
 }
 

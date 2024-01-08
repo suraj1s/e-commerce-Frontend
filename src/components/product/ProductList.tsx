@@ -21,6 +21,7 @@ const ProductList = () => {
   }, // eslint-disable-next-line react-hooks/exhaustive-deps
   [productData , pageNumber, pageLimit ])
 
+  // for infinite scroll
   const hasMore = pageNumber * 10 + 10 < productData?.total
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
@@ -34,6 +35,7 @@ const ProductList = () => {
     if (node) observer.current.observe(node);
   }, [isLoading, hasMore  , pageNumber ]);
 
+  
   return (
     <>
     <h1>All products</h1>
