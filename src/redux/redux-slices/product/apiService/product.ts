@@ -15,6 +15,18 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
         providesTags: ["product"]
       }), 
+
+      searchProducts: builder.query({
+        query: ({
+          searchQuery = ""
+        } : {
+          searchQuery: string,
+        }) => ({
+          url: `products/search?q=${searchQuery}`,
+          method: "GET"
+        }),
+        providesTags: ["product"]
+      }), 
         
       getProduct: builder.query({
         query: (productId  : number) => ({
@@ -29,4 +41,5 @@ export const productApiSlice = apiSlice.injectEndpoints({
 export const {
     useLazyGetProductsQuery,
     useGetProductQuery,
+    useSearchProductsQuery,
 } = productApiSlice

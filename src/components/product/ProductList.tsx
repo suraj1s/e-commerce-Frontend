@@ -1,9 +1,8 @@
 "use client"
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
-import { useLazyGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
+import { useLazyGetProductsQuery, useSearchProductsQuery } from '@/redux/redux-slices/product/apiService/product';
 import { useAppSelector } from '@/redux/redux-store/hooks';
-import { setProductSearchQuery } from '@/redux/redux-slices/product/productSlice';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
@@ -11,24 +10,40 @@ const ProductList = () => {
   const [pageNumber, setPageNumber] = useState(0)
 
   const [ getProducts ,  {data : productData , isFetching}] = useLazyGetProductsQuery();
-  const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
-  console.log(productSearchQuery)
 
+
+  const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
+  const  {data : searchedProducts , isFetching : searchFetching}  = useSearchProductsQuery({searchQuery : productSearchQuery});
+
+  //  const logSearch = useCallback(
+  //   () => {
+  //     console.log(productSearchQuery)
+  //   },
+  //   [productSearchQuery],
+  // )
+  // useEffect(() => {
+  //   logSearch()
+  // }, [productSearchQuery , logSearch])
+  
   useEffect(() => {
      getProducts({
         limit: pageLimit,  
-        currentPage :  pageNumber
+        currentPage :  pageNumber,
       })
       }, // eslint-disable-next-line react-hooks/exhaustive-deps
   [ pageNumber, pageLimit ])
 
   useEffect(() => {
-    if(productData){
-      setFinalProducts(  [  ...finalProducts ,  ...productData.products])
-    }
+    if(productData ){
+      setFinalProducts(  [  ...finalProducts ,  ...productData.products])    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
    [productData])
-  
+
+  useEffect(() => {
+    if(searchedProducts && productSearchQuery ){
+      setFinalProducts( searchedProducts.products)    }
+  },// eslint-disable-next-line react-hooks/exhaustive-deps
+   [searchedProducts , productSearchQuery])
 
   // // for infinite scroll
   const hasMore = ((pageNumber * 10) + 10 ) < productData?.total
@@ -42,10 +57,12 @@ const ProductList = () => {
       }
     });
     if (node) observer.current.observe(node);
-  }, [   hasMore ,  isFetching]);
+  }, [ hasMore , isFetching]);
   return (
     <>
     <h1>All products</h1>
+    {
+         productSearchQuery && searchFetching && <div className=' text-center py-5  text-black font-bold text-3xl'>Searching...</div>}
     <div className='grid grid-cols-1 mobile:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 h-fit mobile:px-4  mobile:py-6 gap-y-10 gap-x-10'>
         {
             finalProducts?.map((item , index) => (
