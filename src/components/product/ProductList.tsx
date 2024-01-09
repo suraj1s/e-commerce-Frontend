@@ -19,7 +19,7 @@ const ProductList = () => {
 
   // fetch all products 
   useEffect(() => {
-    if(productSearchQuery === ""){
+    if(productSearchQuery === null || productSearchQuery ===""){
       getProducts({
             limit: pageLimit,  
             currentPage :  pageNumber,
@@ -48,11 +48,11 @@ const ProductList = () => {
     if(productData  && productSearchQuery === "" && pageNumber === 0){
       setFinalProducts( productData.products)    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
-   [productData])
+   [productData , productSearchQuery])
 
   //  fetch searched producte
   useEffect(() => {
-    productSearchQuery !== "" && searchProduct({searchQuery : productSearchQuery})
+    productSearchQuery !== "" && productSearchQuery !== null && searchProduct({searchQuery : productSearchQuery})
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
 [ productSearchQuery   ])
 
@@ -61,7 +61,6 @@ const ProductList = () => {
       setFinalProducts( searchedProducts.products)    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
    [searchedProducts])
-
 
 
   // // for infinite scroll
