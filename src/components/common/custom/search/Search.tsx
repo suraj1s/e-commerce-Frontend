@@ -1,7 +1,7 @@
 "use client"
 import { SearchIcon } from "@/assets/icons";
 import { setProductSearchQuery } from "@/redux/redux-slices/product/productSlice";
-import { useAppDispatch } from "@/redux/redux-store/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/redux-store/hooks";
 import React, { useEffect, useState } from "react";
 import SearchDropdown from "./SearchDropdown";
 interface SearchProps {
@@ -13,6 +13,8 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
   const [searchQuery, setSearchQuery] = useState("")
   const [searchModal, setSearchModal] = useState(false)
   const dispatch = useAppDispatch()
+  const searchedValue = useAppSelector( state => state.products.productSearchQuery)
+  console.log(searchedValue)
   const hendelChange = (e : React.KeyboardEvent<HTMLInputElement>) => {
     // @ts-ignore
     setSearchQuery(()=> e.target.value)
@@ -34,13 +36,14 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
       <SearchIcon className={ ` absolute bottom-0 left-2 top-0 m-auto h-[20px] w-[20px]`}/>
       <input
         type="text"
+        // value={searchedValue }
         onKeyUp={(e) => hendelChange(e) }
         onClick={()=>setSearchModal(true)}
         placeholder={placeholder }
         className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-gray-700 outline-none"
       />
 
-     { searchQuery && searchModal && <SearchDropdown />     }
+     { searchQuery && searchModal && <SearchDropdown  setSearchModal = {setSearchModal}/>     }
      {
       searchModal && searchQuery    && 
      <div className="w-screen h-screen -z-50 fixed top-0 left-0  popupmodalblur" onClick={()=> setSearchModal(false)} /> 
