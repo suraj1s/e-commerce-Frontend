@@ -20,7 +20,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
         query: ({
           searchQuery = ""
         } : {
-          searchQuery: string,
+          searchQuery: string | null,
         }) => ({
           url: `products/search?q=${searchQuery}`,
           method: "GET"

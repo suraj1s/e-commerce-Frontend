@@ -13,5 +13,5 @@ interface productType  {
 }
 
 interface productStateType {
-    productSearchQuery : string;
+    productSearchQuery : string | null;
 }

@@ -1,5 +1,5 @@
 import { Logo } from '@/assets/images'
-import Search from '@/components/common/custom/Search'
+import Search from '@/components/common/custom/search/Search'
 import Image from 'next/image'
 import React from 'react'
 

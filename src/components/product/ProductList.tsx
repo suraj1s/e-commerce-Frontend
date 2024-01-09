@@ -15,18 +15,38 @@ const ProductList = () => {
 
   const  [ searchProduct ,{data : searchedProducts , isFetching : searchFetching} ] = useLazySearchProductsQuery();
 
+  console.log(finalProducts)
+
   // fetch all products 
   useEffect(() => {
-    productSearchQuery === "" &&  getProducts({
-         limit: pageLimit,  
-         currentPage :  pageNumber,
-       })
+    if(productSearchQuery === ""){
+      getProducts({
+            limit: pageLimit,  
+            currentPage :  pageNumber,
+          })
+    }
       }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  [ pageNumber  , productSearchQuery  ])
+  [ pageNumber  ])
+
+  useEffect(() => {
+    if(productSearchQuery === ""){
+      setPageNumber(0)
+      getProducts({
+         limit: pageLimit,  
+         currentPage :  0,
+       })}
+      }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [  productSearchQuery  ])
  
   useEffect(() => {
-    if(productData ){
+    if(productData  ){
       setFinalProducts(  [  ...finalProducts ,  ...productData.products])    }
+  },// eslint-disable-next-line react-hooks/exhaustive-deps
+   [productData])
+
+  useEffect(() => {
+    if(productData  && productSearchQuery === "" && pageNumber === 0){
+      setFinalProducts( productData.products)    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
    [productData])
 

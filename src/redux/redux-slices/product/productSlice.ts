@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 
 const initialState : productStateType = {
-  productSearchQuery: '' ,
+  productSearchQuery: null ,
     
   };
 const products = createSlice({

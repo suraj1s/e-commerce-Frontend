@@ -3,6 +3,7 @@ import { SearchIcon } from "@/assets/icons";
 import { setProductSearchQuery } from "@/redux/redux-slices/product/productSlice";
 import { useAppDispatch } from "@/redux/redux-store/hooks";
 import React, { useEffect, useState } from "react";
+import SearchDropdown from "./SearchDropdown";
 interface SearchProps {
   placeholder?: string;
   className?: string;
@@ -36,6 +37,8 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
         placeholder={placeholder }
         className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-gray-700 outline-none"
       />
+
+     { searchQuery && <SearchDropdown />     }
     </div>
   );
 };
