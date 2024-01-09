@@ -15,18 +15,23 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
   const dispatch = useAppDispatch()
   const searchedValue = useAppSelector( state => state.products.productSearchQuery)
   console.log(searchedValue)
-  const hendelChange = (e : React.KeyboardEvent<HTMLInputElement>) => {
+  const hendelChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setSearchQuery(()=> e.target.value)
     // 
   }
 
   useEffect(() => {
-    const cleartime = setTimeout(() => {
+    if(searchQuery.length > 1) {
+      const cleartime = setTimeout(() => {
+        dispatch(setProductSearchQuery(searchQuery))
+      }, 300);
+      return () => {
+        clearTimeout(cleartime)
+      }
+    }
+    else {
       dispatch(setProductSearchQuery(searchQuery))
-    }, 300);
-    return () => {
-      clearTimeout(cleartime)
     }
   },  // eslint-disable-next-line react-hooks/exhaustive-deps 
   [searchQuery])
@@ -37,7 +42,7 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
       <input
         type="text"
         // value={searchedValue }
-        onKeyUp={(e) => hendelChange(e) }
+        onChange={(e) => hendelChange(e) }
         onClick={()=>setSearchModal(true)}
         placeholder={placeholder }
         className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-gray-700 outline-none"

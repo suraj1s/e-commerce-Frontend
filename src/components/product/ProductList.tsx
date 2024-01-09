@@ -2,7 +2,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
 import { useLazyGetProductsQuery, useLazySearchProductsQuery } from '@/redux/redux-slices/product/apiService/product';
-import { useAppSelector } from '@/redux/redux-store/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/redux-store/hooks';
+import { setProductSearchQuery } from '@/redux/redux-slices/product/productSlice';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
@@ -14,7 +15,6 @@ const ProductList = () => {
   const [ getProducts ,  {data : productData ,  isLoading, isFetching}] = useLazyGetProductsQuery();
 
   const  [ searchProduct ,{data : searchedProducts , isFetching : searchFetching} ] = useLazySearchProductsQuery();
-
 
   // fetch all products 
   useEffect(() => {
