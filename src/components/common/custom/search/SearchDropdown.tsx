@@ -23,12 +23,19 @@ const SearchDropdown = () => {
         },
     ]
   return (
-    <div className='absolute bg-gray-100 text-gray-700  h-fit w-full p-6 flex flex-col gap-y-2 '>
+    <div className='absolute bg-gray-100 text-gray-700 mt-1 rounded-xl  h-fit w-full px-6 flex flex-col  '>
         {
             searchedData.map( (data , i) => (
-                <Link href={data.link} key={i} className='border-b-[1px] border-gray-300' >
+                <div key={i}  >
+                    <h1 className='border-b-[1px] py-3 hover:cursor-pointer  border-gray-300' onClick={()=> console.log("searched" , data.title , i)}>
                     {data.title}
-                </Link>
+                    </h1>
+                </div>
+                // <Link href={data.link} key={i}  >
+                //     <h1 className='border-b-[1px] border-gray-300' onClick={()=> console.log("searched" , data.title , i)}>
+                //     {data.title}
+                //     </h1>
+                // </Link>
             ))
         }
     </div>

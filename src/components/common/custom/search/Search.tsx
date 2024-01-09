@@ -11,6 +11,7 @@ interface SearchProps {
 
 const Search = ({placeholder = "Search", className } : SearchProps) => {
   const [searchQuery, setSearchQuery] = useState("")
+  const [searchModal, setSearchModal] = useState(false)
   const dispatch = useAppDispatch()
   const hendelChange = (e : React.KeyboardEvent<HTMLInputElement>) => {
     // @ts-ignore
@@ -34,11 +35,16 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
       <input
         type="text"
         onKeyUp={(e) => hendelChange(e) }
+        onClick={()=>setSearchModal(true)}
         placeholder={placeholder }
         className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-gray-700 outline-none"
       />
 
-     { searchQuery && <SearchDropdown />     }
+     { searchQuery && searchModal && <SearchDropdown />     }
+     {
+      searchModal && searchQuery    && 
+     <div className="w-screen h-screen -z-50 fixed top-0 left-0  popupmodalblur" onClick={()=> setSearchModal(false)} /> 
+     }
     </div>
   );
 };
