@@ -41,5 +41,5 @@ export const productApiSlice = apiSlice.injectEndpoints({
 export const {
     useLazyGetProductsQuery,
     useGetProductQuery,
-    useSearchProductsQuery,
+    useLazySearchProductsQuery,
 } = productApiSlice

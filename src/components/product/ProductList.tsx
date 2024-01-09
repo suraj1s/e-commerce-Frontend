@@ -1,65 +1,62 @@
 "use client"
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
-import { useLazyGetProductsQuery, useSearchProductsQuery } from '@/redux/redux-slices/product/apiService/product';
+import { useLazyGetProductsQuery, useLazySearchProductsQuery } from '@/redux/redux-slices/product/apiService/product';
 import { useAppSelector } from '@/redux/redux-store/hooks';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
-  const pageLimit = 10
+  const pageLimit = 20;
   const [pageNumber, setPageNumber] = useState(0)
 
-  const [ getProducts ,  {data : productData , isFetching}] = useLazyGetProductsQuery();
-
-
   const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
-  const  {data : searchedProducts , isFetching : searchFetching}  = useSearchProductsQuery({searchQuery : productSearchQuery});
+ 
+  const [ getProducts ,  {data : productData ,  isLoading, isFetching}] = useLazyGetProductsQuery();
 
-  //  const logSearch = useCallback(
-  //   () => {
-  //     console.log(productSearchQuery)
-  //   },
-  //   [productSearchQuery],
-  // )
-  // useEffect(() => {
-  //   logSearch()
-  // }, [productSearchQuery , logSearch])
-  
+  const  [ searchProduct ,{data : searchedProducts , isFetching : searchFetching} ] = useLazySearchProductsQuery();
+
+  // fetch all products 
   useEffect(() => {
-    if(productSearchQuery === "")  {
-      getProducts({
+    productSearchQuery === "" &&  getProducts({
          limit: pageLimit,  
          currentPage :  pageNumber,
        })
-    }
       }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  [ pageNumber, pageLimit  , productSearchQuery  ])
-
+  [ pageNumber  , productSearchQuery  ])
+ 
   useEffect(() => {
     if(productData ){
       setFinalProducts(  [  ...finalProducts ,  ...productData.products])    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
    [productData])
 
+  //  fetch searched producte
   useEffect(() => {
-    if(searchedProducts  ){
+    productSearchQuery !== "" && searchProduct({searchQuery : productSearchQuery})
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+[ productSearchQuery   ])
+
+   useEffect(() => {
+    if(searchedProducts   ){
       setFinalProducts( searchedProducts.products)    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
-   [searchedProducts , productSearchQuery])
+   [searchedProducts])
+
+
 
   // // for infinite scroll
   const hasMore = ((pageNumber * 10) + 10 ) < productData?.total
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
-    if (isFetching) return;
+    if (isLoading) return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore && !isFetching) {
+      if (entries[0].isIntersecting && hasMore && !isLoading) {
         setPageNumber( (prev ) =>  prev + 1)
       }
     });
     if (node) observer.current.observe(node);
-  }, [ hasMore , isFetching]);
+  }, [ hasMore , isLoading]);
   return (
     <>
     <h1>All products</h1>
