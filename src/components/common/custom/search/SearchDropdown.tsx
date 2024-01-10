@@ -1,15 +1,15 @@
 import { useLazySearchProductTitleQuery } from '@/redux/redux-slices/product/apiService/product'
 import { setProductSearchQuery } from '@/redux/redux-slices/product/productSlice'
-import { useAppDispatch, useAppSelector } from '@/redux/redux-store/hooks'
-import Link from 'next/link'
+import { useAppDispatch } from '@/redux/redux-store/hooks'
 import React, { useEffect, useState } from 'react'
 
 interface SearchDropdownProps {
     setSearchModal : React.Dispatch<React.SetStateAction<boolean>>
+    inputRef: any
+    searchText: string
 }
 
-const SearchDropdown = ( {setSearchModal} : SearchDropdownProps) => {
-    const searchQuery = useAppSelector(state => state.products.productSearchQuery)
+const SearchDropdown = ( {setSearchModal , inputRef , searchText} : SearchDropdownProps) => {
     const  [ searchProductTitle ,{data : searchedProductTitle , isFetching : searchTitleFetching} ] = useLazySearchProductTitleQuery();
     const [finalProductTitle, setFinalProductTitle] = useState<productType[]>([])
     const dispatch = useAppDispatch()
@@ -17,9 +17,9 @@ const SearchDropdown = ( {setSearchModal} : SearchDropdownProps) => {
 
       //  fetch searched producte
   useEffect(() => {
-    searchQuery !== "" && searchQuery !== null && searchProductTitle({searchQuery : searchQuery})
+    searchText !== "" && searchText !== null && searchProductTitle({searchQuery : searchText})
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
-[ searchQuery   ])
+[ searchText   ])
 
    useEffect(() => {
     if(searchedProductTitle   ){
@@ -29,6 +29,7 @@ const SearchDropdown = ( {setSearchModal} : SearchDropdownProps) => {
 
    const hendelSearch = (data : productType)=> {
     dispatch(setProductSearchQuery(data.title))
+    inputRef.current.value = data.title
     setSearchModal(false)
    }
   return (
