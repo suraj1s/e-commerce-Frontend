@@ -2,8 +2,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
 import { useLazyGetProductsQuery, useLazySearchProductsQuery } from '@/redux/redux-slices/product/apiService/product';
-import { useAppDispatch, useAppSelector } from '@/redux/redux-store/hooks';
-import { setProductSearchQuery } from '@/redux/redux-slices/product/productSlice';
+import {  useAppSelector } from '@/redux/redux-store/hooks';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
@@ -24,8 +23,8 @@ const ProductList = () => {
             currentPage :  pageNumber,
           })
     }
-      }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  [ pageNumber  ])
+      }, 
+  [ pageNumber ])
 
   useEffect(() => {
     if(productSearchQuery === ""){
@@ -34,31 +33,31 @@ const ProductList = () => {
          limit: pageLimit,  
          currentPage :  0,
        })}
-      }, // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, 
   [  productSearchQuery  ])
  
   useEffect(() => {
     if(productData  ){
-      setFinalProducts(  [  ...finalProducts ,  ...productData.products])    }
-  },// eslint-disable-next-line react-hooks/exhaustive-deps
+      setFinalProducts(  [ ...finalProducts ,  ...productData.products])    }
+  },
    [productData])
 
   useEffect(() => {
     if(productData  && productSearchQuery === "" && pageNumber === 0){
       setFinalProducts( productData.products)    }
-  },// eslint-disable-next-line react-hooks/exhaustive-deps
+  },
    [productData , productSearchQuery])
 
   //  fetch searched producte
   useEffect(() => {
-    productSearchQuery !== "" && productSearchQuery !== null && searchProduct({searchQuery : productSearchQuery})
-    }, // eslint-disable-next-line react-hooks/exhaustive-deps
-[ productSearchQuery   ])
+    productSearchQuery &&  productSearchQuery !== "" && productSearchQuery !== null && searchProduct({searchQuery : productSearchQuery})
+    }, 
+[ productSearchQuery  ])
 
    useEffect(() => {
     if(searchedProducts   ){
       setFinalProducts( searchedProducts.products)    }
-  },// eslint-disable-next-line react-hooks/exhaustive-deps
+  },
    [searchedProducts])
 
 

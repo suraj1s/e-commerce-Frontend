@@ -10,7 +10,7 @@ const ItemCart = ( {item , index } : { item : productType , index : number}) => 
             <div className='  rounded-md overflow-hidden'>
                 <Image src={item.thumbnail} alt={item.title} width={500} height={500} className=' w-56 max-w-[45vw] h-48 mobile:w-full mobile:h-40 object-cover object-center' />
             </div>
-                <h1 className=' text-2xl font-bold text-primary-700'>
+                <h1 className=' hidden md:block text-2xl font-bold text-primary-700'>
                     {index + 1} and {item.id}
                 </h1>
             <div className='text-mobile font-medium flex flex-col gap-y-2 pt-3  overflow-hidden'>

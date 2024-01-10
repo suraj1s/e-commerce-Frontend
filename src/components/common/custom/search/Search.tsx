@@ -21,7 +21,6 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
     setSearchText(()=> e.target.value)
     setSearchModal(true)
   }
-console.log(searchModal)
    useEffect(() => {
     if(searchText.length > 1) {
       const cleartime = setTimeout(() => {
@@ -50,10 +49,14 @@ console.log(searchModal)
 
   const handelSpecialKey = (e : React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter") {
+      setSearchQuery(searchText)
       handelSearch()
       setSearchModal(false)
     }
-     else if(e.key === "Backspace" && searchText.length === 0) {
+    if(e.key === "Enter" && searchText.length < 1) {
+      window.location.href = "/dashboard"
+    }
+     else if(e.key === "Backspace" && searchText.length < 1) {
        console.log("backspace")
        setSearchQuery("")
        handelSearch()
