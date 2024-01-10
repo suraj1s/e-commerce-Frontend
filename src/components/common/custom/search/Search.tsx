@@ -58,10 +58,6 @@ console.log(searchModal)
        setSearchQuery("")
        handelSearch()
     }
-    // else if(e.key === "Backspace" && searchText.length > 0) {
-    //   setSearchQuery(searchText)
-    //   handelSearch()
-    // }
     
   }
   return (
