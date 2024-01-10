@@ -12,10 +12,15 @@ interface SearchProps {
 const Search = ({placeholder = "Search", className } : SearchProps) => {
   const [searchQuery, setSearchQuery] = useState("")
   const [searchModal, setSearchModal] = useState(false)
+  const [searchedQuery, setSearchedQuery] = useState("")
   const dispatch = useAppDispatch()
   const searchedValue = useAppSelector( state => state.products.productSearchQuery)
-  console.log(searchedValue)
-  const hendelChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    searchedValue &&
+    setSearchedQuery(searchedValue)
+  }, [searchedValue])
+  
+  const hendelChange =  (e : React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setSearchQuery(()=> e.target.value)
     // 
@@ -41,7 +46,7 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
       <SearchIcon className={ ` absolute bottom-0 left-2 top-0 m-auto h-[20px] w-[20px]`}/>
       <input
         type="text"
-        // value={searchedValue }
+        value={searchedQuery }
         onChange={(e) => hendelChange(e) }
         onClick={()=>setSearchModal(true)}
         placeholder={placeholder }
