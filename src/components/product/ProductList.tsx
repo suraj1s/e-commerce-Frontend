@@ -14,7 +14,7 @@ const ProductList = () => {
   const [ getProducts ,  {data : productData ,  isLoading, isFetching}] = useLazyGetProductsQuery();
   const  [ searchProduct ,{data : searchedProducts , isFetching : searchFetching} ] = useLazySearchProductsQuery();
 
-console.log(searchedProducts , "searchedProducts" , productData , "productData" , productSearchQuery , "productSearchQuery" , finalProducts , "finalProducts")
+// console.log(searchedProducts , "searchedProducts" , productData , "productData" , productSearchQuery , "productSearchQuery" , finalProducts , "finalProducts")
 
   // fetch all products 
   useEffect(() => {

@@ -46,6 +46,7 @@ const CustomDropDown = ({
       <input
         type="text"
         ref={inputRef}
+        className="p-0 h-fit text-xs"
         hidden
         {...register}
         onChange={() => {
