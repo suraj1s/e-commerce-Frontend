@@ -1,10 +1,9 @@
 "use client"
 import { SearchIcon, XIcon } from "@/assets/icons";
 import { setProductSearchQuery } from "@/redux/redux-slices/product/productSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/redux-store/hooks";
+import { useAppDispatch } from "@/redux/redux-store/hooks";
 import React, { useEffect, useRef, useState } from "react";
 import SearchDropdown from "./SearchDropdown";
-import { set } from "react-hook-form";
 interface SearchProps {
   placeholder?: string;
   className?: string;
