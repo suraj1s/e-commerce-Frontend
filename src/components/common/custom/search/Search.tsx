@@ -35,32 +35,22 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
     },  // eslint-disable-next-line react-hooks/exhaustive-deps 
   [searchText])
 
-  const handelSearch = () => {
-    dispatch(setProductSearchQuery(searchQuery))
-    setSearchModal(false)
-  }
   const hendelCancelsearch = ()=> {
     // @ts-ignore
-    inputRef.current.value = ""
+    inputRef.current.value = null
     setSearchQuery(""); 
-    handelSearch()
+    dispatch(setProductSearchQuery(""))
+    setSearchModal(false)
   }
 
   const handelSpecialKey = (e : React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter") {
-      setSearchQuery(searchText)
-      handelSearch()
+      dispatch(setProductSearchQuery(searchText))
       setSearchModal(false)
     }
-    if(e.key === "Enter" && searchText.length < 1) {
-      window.location.href = "/dashboard"
+   else  if(e.key === "Enter" && (searchQuery === ""  || searchText === "" )) {
+      dispatch(setProductSearchQuery(null))
     }
-     else if(e.key === "Backspace" && searchText.length < 1) {
-       console.log("backspace")
-       setSearchQuery("")
-       handelSearch()
-    }
-    
   }
   return (
     <div className={ ` ${ className } relative w-full text-gray-500`}>
@@ -73,9 +63,12 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
         placeholder={placeholder }
         className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-gray-700 outline-none"
       />
+      {
+        searchText.length > 0 && searchQuery.length > 0 &&
       <button className={ ` absolute bottom-2 right-4  top-0 m-auto h-[20px] hover:cursor-pointer `} onClick={hendelCancelsearch}>
       <XIcon  className = " w-[30px]"  />
       </button>
+      }
      { searchText && searchModal && <SearchDropdown inputRef = {inputRef}  setSearchModal = {setSearchModal} searchText = {searchText}/>     }
      {
       searchModal && searchText    && 

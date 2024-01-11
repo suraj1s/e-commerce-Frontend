@@ -12,12 +12,13 @@ const ProductList = () => {
   const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
  
   const [ getProducts ,  {data : productData ,  isLoading, isFetching}] = useLazyGetProductsQuery();
-
   const  [ searchProduct ,{data : searchedProducts , isFetching : searchFetching} ] = useLazySearchProductsQuery();
+
+console.log(searchedProducts , "searchedProducts" , productData , "productData" , productSearchQuery , "productSearchQuery" , finalProducts , "finalProducts")
 
   // fetch all products 
   useEffect(() => {
-    if(productSearchQuery === null || productSearchQuery ===""){
+    if(productSearchQuery === null || productSearchQuery == ""){
       getProducts({
             limit: pageLimit,  
             currentPage :  pageNumber,
@@ -27,7 +28,7 @@ const ProductList = () => {
   [ pageNumber ])
 
   useEffect(() => {
-    if(productSearchQuery === ""){
+    if(productSearchQuery === null || productSearchQuery == ""){
       setPageNumber(0)
       getProducts({
          limit: pageLimit,  
@@ -43,10 +44,10 @@ const ProductList = () => {
    [productData])
 
   useEffect(() => {
-    if(productData  && productSearchQuery === "" && pageNumber === 0){
+    if(  productSearchQuery == "" ){
       setFinalProducts( productData.products)    }
   },
-   [productData , productSearchQuery])
+   [ productSearchQuery] )
 
   //  fetch searched producte
   useEffect(() => {
@@ -55,8 +56,8 @@ const ProductList = () => {
 [ productSearchQuery  ])
 
    useEffect(() => {
-    if(searchedProducts   ){
-      setFinalProducts( searchedProducts.products)    }
+    productSearchQuery !== "" && productSearchQuery !== null &&
+      setFinalProducts( searchedProducts.products) 
   },
    [searchedProducts])
 
@@ -65,7 +66,8 @@ const ProductList = () => {
   const hasMore = ((pageNumber * 10) + 10 ) < productData?.total
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
-    if (isLoading) return;
+    if (isLoading ) return;
+    if(searchedProducts?.products.length !== 0 && productSearchQuery === "")  return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore && !isLoading) {

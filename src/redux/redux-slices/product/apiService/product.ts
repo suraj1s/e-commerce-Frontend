@@ -27,6 +27,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
         providesTags: ["product"]
       }), 
+      
       searchProductTitle: builder.query({
         query: ({
           searchQuery = "",

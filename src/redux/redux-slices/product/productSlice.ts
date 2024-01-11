@@ -10,7 +10,7 @@ const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setProductSearchQuery: (state, action: PayloadAction<string>) => {
+    setProductSearchQuery: (state, action: PayloadAction<string | null>) => {
         state.productSearchQuery = action.payload
     },
    
