@@ -51,9 +51,7 @@ const Navbar = () => {
       </div>
      ))}
       </div>
-      <div className='relative pr-16'>
       <ProductFilter />
-      </div>
     </div>
 
     </div>
