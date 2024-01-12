@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import SideNavbar from './SideNavbar'
 import CustomFilter from '@/components/common/custom/CustomFilter'
 import CustomDropDown from '@/components/common/custom/CustomDropDown'
+import ProductFilter from './ProductFilter'
 
 const Navbar = () => {
   const navItems = [
@@ -50,27 +51,8 @@ const Navbar = () => {
       </div>
      ))}
       </div>
-      <div>
-        <CustomDropDown 
-         
-        options={[
-          {
-          name : 'price low to high',
-          value : 'price low to high'
-        },
-        {
-          name : 'price high to low',
-          value : 'price high to low'
-        },
-        {
-          name : 'newest',
-          value : 'newest'
-        },
-        {
-          name : 'oldest',
-          value : 'oldest'
-        }] }
-        />
+      <div className='relative pr-16'>
+      <ProductFilter />
       </div>
     </div>
 
