@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
 import { useLazyGetProductsQuery, useLazySearchProductsQuery } from '@/redux/redux-slices/product/apiService/product';
 import {  useAppSelector } from '@/redux/redux-store/hooks';
+import { set } from 'react-hook-form';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
@@ -18,6 +19,7 @@ const ProductList = () => {
 
   // fetch all products 
   useEffect(() => {
+    console.log("useeffect 1 called ")
     if(productSearchQuery === null || productSearchQuery == ""){
       getProducts({
             limit: pageLimit,  
@@ -28,8 +30,9 @@ const ProductList = () => {
   [ pageNumber ])
 
   useEffect(() => {
+    console.log("useeffect 2 called ")
+    setPageNumber(0)
     if(productSearchQuery === null || productSearchQuery == ""){
-      setPageNumber(0)
       getProducts({
          limit: pageLimit,  
          currentPage :  0,
@@ -38,24 +41,31 @@ const ProductList = () => {
   [  productSearchQuery  ])
  
   useEffect(() => {
+    console.log("useeffect 3 called ")
     if(productData  ){
       setFinalProducts(  [ ...finalProducts ,  ...productData.products])    }
   },
    [productData])
 
   useEffect(() => {
+    console.log("useeffect 4 called ")
+    setPageNumber(0)
     if(  productSearchQuery == "" ){
-      setFinalProducts( productData.products)    }
+      setFinalProducts( productData.products) 
+       }
   },
    [ productSearchQuery] )
 
   //  fetch searched producte
   useEffect(() => {
+    console.log("useeffect 5 called ")
+    setPageNumber(0)
     productSearchQuery &&  productSearchQuery !== "" && productSearchQuery !== null && searchProduct({searchQuery : productSearchQuery})
     }, 
 [ productSearchQuery  ])
 
    useEffect(() => {
+    console.log("useeffect 6 called ")
     productSearchQuery !== "" && productSearchQuery !== null &&
       setFinalProducts( searchedProducts.products) 
   },
