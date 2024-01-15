@@ -18,9 +18,9 @@ const Header = () => {
       <Search  placeholder='Search Product '  />
 
       </div>
-      <Link  href={"/profile"}> Profile</Link >
-      <Link  href={"/return-and-order"} >Return <span className='whitespace-nowrap'> and Order </span> </Link >
-      <Link href={"/cart"} >Cart</Link >
+      <Link  href={"/profile"} >   Profile</Link >
+      <Link  href={"/return-and-order"} >  Return <span className='whitespace-nowrap'> and Order </span> </Link >
+      <Link href={"/cart"} >  Cart</Link >
       </div>
       <div className='block md:hidden w-full'>
       <Search  placeholder='Search Product '  />
