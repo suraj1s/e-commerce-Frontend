@@ -28,7 +28,7 @@ const ProductFilter = () => {
   return (
         <div className=' relative  font-medium '>
             {isFilterOpen && <div className='h-screen w-screen fixed top-0 left-0  ' onClick={()=> setIsFilterOpen(false)} />  }
-       <div className='bg-gray-300 text-gray-800 px-4 py-1 rounded-2xl absolute whitespace-nowrap  right-8 top-0'>
+       <div className='bg-gray-300 text-gray-800 px-4 py-1 rounded-2xl absolute whitespace-nowrap  right-8 -top-4'>
         {
             isFilterOpen ?
             <div className=' text-sm  rounded-2xl  transition-all ' >

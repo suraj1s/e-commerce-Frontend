@@ -18,7 +18,6 @@ const ProductList = () => {
 
   // fetch all products 
   useEffect(() => {
-    console.log("useeffect 1 called ")
     if(productSearchQuery === null || productSearchQuery == ""){
       getProducts({
             limit: pageLimit,  
@@ -48,11 +47,12 @@ const ProductList = () => {
   },
   [productData , searchedProducts])
 
-  const hasMore = ((pageNumber * 10) + 10 ) < productData?.total
+
+  const hasMore = ((pageNumber * 10) + 10 ) < finalProducts?.length
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
     if (isLoading ) return;
-    if(searchedProducts?.products.length !== 0 && productSearchQuery === "")  return;
+    // if(searchedProducts?.products.length !== 0 && productSearchQuery === "")  return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore && !isLoading) {
