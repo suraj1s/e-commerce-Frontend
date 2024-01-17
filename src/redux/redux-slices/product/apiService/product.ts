@@ -15,20 +15,46 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
         providesTags: ["product"]
       }), 
-        
-      getProduct: builder.query({
-        query: (id : number) => ({
-          url: `products/${id}}`,
+
+      searchProducts: builder.query({
+        query: ({
+          searchQuery = ""
+        } : {
+          searchQuery: string | null,
+        }) => ({
+          url: `products/search?q=${searchQuery}`,
           method: "GET"
         }),
         providesTags: ["product"]
+      }), 
+      
+      searchProductTitle: builder.query({
+        query: ({
+          searchQuery = "",
+          limit = 6
+        } : {
+          searchQuery: string | null,
+          limit?: number ,
+        }) => ({
+          url: `products/search?q=${searchQuery}&limit=${limit}`,
+          method: "GET"
+        }),
+        providesTags: ["product"]
+      }), 
+        
+      getProduct: builder.query({
+        query: (productId  : number) => ({
+          url: `products/${productId}`,
+          method: "GET"
+        }),
+        providesTags: ["productDetail"]
     }),  
   })
 })
 
 export const {
-    useGetProductsQuery,
     useLazyGetProductsQuery,
     useGetProductQuery,
-    useLazyGetProductQuery,
+    useLazySearchProductsQuery,
+    useLazySearchProductTitleQuery,
 } = productApiSlice

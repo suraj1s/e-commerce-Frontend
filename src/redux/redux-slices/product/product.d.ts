@@ -13,6 +13,5 @@ interface productType  {
 }
 
 interface productStateType {
-    limit : number;
-    currentPage : number;
+    productSearchQuery : string | null;
 }

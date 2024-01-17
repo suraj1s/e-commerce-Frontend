@@ -3,24 +3,19 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 
 const initialState : productStateType = {
-    limit: 20 ,
-    currentPage: 0,
+  productSearchQuery: null ,
     
   };
 const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setLimit: (state, action: PayloadAction<number>) => {
-        state.limit = action.payload
+    setProductSearchQuery: (state, action: PayloadAction<string | null>) => {
+        state.productSearchQuery = action.payload
     },
-    setCurrentPage: (state) => {
-        state.currentPage += 1;
-      },
-    // any type of data can be added in redux store 
-    //   state.data = [...state.data, ...action.payload ]
+   
   }
 })
 
 export default products.reducer
-export const { setLimit,setCurrentPage } = products.actions
+export const { setProductSearchQuery } = products.actions

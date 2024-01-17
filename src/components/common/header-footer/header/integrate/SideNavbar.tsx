@@ -11,8 +11,8 @@ const SideNavbar = ({handelClose} : SideNavbarProp) => {
  
     const [isSideNavbarLink , setIsSideNavbarLink] = useState(false)
   return (
-    <div className='relative  '>
-    <div className='fixed left-0 top-0   h-screen w-80 bg-gray-100 text-gray-900 z-20 '>
+    <div className='relative '>
+    <div className='fixed left-0 top-0   h-screen w-72 bg-gray-100 text-gray-900 z-20  translate-x-0  transition-all duration-500'>
         <div className='bg-gray-800 text-gray-300 font-bold text-xl  py-5 px-8'>
             hello User
         </div>

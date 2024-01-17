@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import SideNavbar from './SideNavbar'
+import ProductFilter from './ProductFilter'
 
 const Navbar = () => {
   const navItems = [
@@ -21,7 +22,8 @@ const Navbar = () => {
   const [isSideNavbarOpen, setIsSideNavbarOpen] = useState(false)
   return (
     <div className='bg-gray-700 text-gray-300'>
-    <div className='flex container gap-x-5 font-semibold flex-wrap justify-start py-3 capitalize'>
+    <div className='flex container font-semibold flex-wrap justify-between py-3 capitalize items-center'>
+      <div className='flex gap-x-5  flex-wrap '>
       <div className='flex gap-x-2  items-center hover:cursor-pointer' onClick={()=> setIsSideNavbarOpen((prev) => !prev)}>
         
         <div className='flex flex-col  font-light  text-xl leading-[5px] -tracking-[5px]'>
@@ -46,6 +48,8 @@ const Navbar = () => {
         </Link>
       </div>
      ))}
+      </div>
+      <ProductFilter />
     </div>
 
     </div>
