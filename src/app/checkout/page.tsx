@@ -187,11 +187,10 @@ const Page = () => {
   const onSubmit =  (data: any) => {
     console.log("data", data);
   };
-  // console.log("addContactResponce", addContactResponce);
   return (
     <div className="pageContainer">
      
-      <form onSubmit={handleSubmit(onSubmit)} className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px]">
+      <form onSubmit={handleSubmit(onSubmit)} className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative z-0">
         {inputfieldDetails?.map((item, index) =>
           item?.options ? (
             <div key={index} className={`${item?.className} space-y-[6px]`}>

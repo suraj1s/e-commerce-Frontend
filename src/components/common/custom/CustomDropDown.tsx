@@ -14,14 +14,14 @@ const CustomDropDown = ({
 }: CustomDropDownProp) => {
   return (
     <div>
-      <div className=" relative rounded-lg w-64 bg-gray-50 overflow-hidden ">
+      <div className=" relative rounded-lg  bg-gray-50  ">
         <ArrowDownIcon  className = "w-6 h-6 absolute right-2 top-2"/>
         <select
           {...register(inputfield.name)}
-          className="appearance-none  bg-transparent ring-0 outline-none border border-neutral-500 focus:ring-violet-500 focus:border-violet-500 block text-sm font-bold rounded-lg  w-full p-2"
+          className="appearance-none outline-none text-sm font-bold rounded-lg  w-full p-2 "
         >
           {inputfield?.options?.map((item, index) => (
-            <option value={item.value}  key={index}  className="flex gap-x-2 px-3 py-1" >
+            <option value={item.value}  key={index}  className="flex gap-x-2 px-3 py-1 bg-gray-500 text-red-600" >
                 {item.name}
                 </option>
           ))}
