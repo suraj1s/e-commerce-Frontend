@@ -58,7 +58,7 @@ const Cart = () => {
         <p className="mt-0.5 text-sm ">
           Shipping and taxes calculated at checkout.
         </p>
-        <CustomButton title="Checkout" className="!w-fit mx-auto my-4" />
+        <CustomButton title="Checkout" className="!w-fit mx-auto my-4"  path="/checkout" />
         <CustomButton
           title="continue shopping "
           className="!bg-transparent !text-primary-700 !w-fit !p-0 shadow-none mx-auto"

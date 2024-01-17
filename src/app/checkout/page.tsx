@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 
-const page = () => {
+const CheckoutPage = () => {
     const {
         register,
         handleSubmit,
@@ -109,7 +109,7 @@ const page = () => {
                             required: "plese select a valid address",
                           })}
                           autoComplete="country-name"
-                          className="block w-full rounded-md border-0 py-1.5 text-zinc-800 dark:text-zinc-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                          className="block w-full rounded-md border-0 py-1.5 text-zinc-800 dark:text-zinc-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:max-w-xs sm:text-sm sm:leading-6"
                         >
                           <option>United States</option>
                           <option>Canada</option>
@@ -321,6 +321,8 @@ const page = () => {
                           <Image
                             src={item.thumbnail}
                             alt={item.title}
+                            width={200}
+                            height={200}
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
@@ -412,4 +414,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CheckoutPage
