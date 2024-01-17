@@ -42,9 +42,7 @@ const Cart = () => {
                                   <option key={index} value={item + 1}>{item + 1}</option>
                                 ))
                               }
-                           
                             </select>  
-                            
                           </div>
                         </div>
 

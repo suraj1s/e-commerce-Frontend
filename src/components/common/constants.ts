@@ -8,12 +8,10 @@ export const cartData = [
       "stock": 0,
       "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/data/products/1/thumbnail.jpg",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/data/products/1/1.jpg",
-        "https://cdn.dummyjson.com/data/products/1/2.jpg",
-        "https://cdn.dummyjson.com/data/products/1/3.jpg",
-        "https://cdn.dummyjson.com/data/products/1/thumbnail.jpg"
+        "https://cdn.dummyjson.com/product-images/1.jpg",
+        "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
       ],
       "deleted": true,
       "delete": true,
@@ -31,11 +29,11 @@ export const cartData = [
       "stock": 123,
       "brand": "OPPO",
       "category": "selectone",
-      "thumbnail": "https://cdn.dummyjson.com/data/products/4/thumbnail.jpg",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/data/products/4/1.jpg",
-        "https://cdn.dummyjson.com/data/products/4/2.jpg",
-        "https://cdn.dummyjson.com/data/products/4/3.jpg"
+        "https://cdn.dummyjson.com/product-images/4/1.jpg",
+        "https://cdn.dummyjson.com/product-images/4/2.jpg",
+        "https://cdn.dummyjson.com/product-images/4/3.jpg"
       ],
       "quantity": 3,
       "user": 2,
