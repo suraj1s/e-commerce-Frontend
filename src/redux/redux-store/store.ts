@@ -1,4 +1,4 @@
-import { apiSlice } from "@/api/apiSlice"
+import { apiSlice } from "@/redux/redux-store/apiSlice"
 import {
     Action,
     combineReducers,
