@@ -6,7 +6,7 @@ import {  useAppSelector } from '@/redux/redux-store/hooks';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
-  const pageLimit = 20;
+  const pageLimit = 10;
   const [pageNumber, setPageNumber] = useState(0)
 
   const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)

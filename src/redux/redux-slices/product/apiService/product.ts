@@ -6,13 +6,15 @@ export const productApiSlice = apiSlice.injectEndpoints({
         query: ({
           limit = 10,
           currentPage = 0,
+          search = ""
         } : {
           limit?: number,
           currentPage?: number,
+          search?: string
         }) => ({
           // url: `products?limit=${limit}&skip=${(currentPage * limit)}`,
-          url: `products?_limit=${limit}&_page=${currentPage}`,
-
+          url: `products`,
+          params: { limit, page:currentPage , search },
           method: "GET"
         }),
         providesTags: ["product"]
