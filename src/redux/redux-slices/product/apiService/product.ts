@@ -1,4 +1,4 @@
-import { apiSlice } from "@/api/apiSlice"
+import { apiSlice } from "@/redux/redux-store/apiSlice"
 
 export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({  
@@ -6,27 +6,19 @@ export const productApiSlice = apiSlice.injectEndpoints({
         query: ({
           limit = 10,
           currentPage = 0,
+          searchQuery = ""
         } : {
           limit?: number,
           currentPage?: number,
+          searchQuery?: string | null,
         }) => ({
-          url: `products?limit=${limit}&skip=${(currentPage * limit)}`,
+          url: `products`,
+          params: { limit, page:currentPage , searchQuery },
           method: "GET"
         }),
         providesTags: ["product"]
       }), 
 
-      searchProducts: builder.query({
-        query: ({
-          searchQuery = ""
-        } : {
-          searchQuery: string | null,
-        }) => ({
-          url: `products/search?q=${searchQuery}`,
-          method: "GET"
-        }),
-        providesTags: ["product"]
-      }), 
       
       searchProductTitle: builder.query({
         query: ({
@@ -36,7 +28,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
           searchQuery: string | null,
           limit?: number ,
         }) => ({
-          url: `products/search?q=${searchQuery}&limit=${limit}`,
+          url: `products`,
+          params: { limit,  page:0 ,  searchQuery },
           method: "GET"
         }),
         providesTags: ["product"]
@@ -55,6 +48,5 @@ export const productApiSlice = apiSlice.injectEndpoints({
 export const {
     useLazyGetProductsQuery,
     useGetProductQuery,
-    useLazySearchProductsQuery,
     useLazySearchProductTitleQuery,
 } = productApiSlice

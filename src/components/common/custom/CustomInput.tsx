@@ -2,35 +2,6 @@
 import { EyeIcon } from "@/assets/icons";
 import React, { useState } from "react";
 
-export type inputField = {
-  title?: string,
-  className?: string,
-  validation?: Obj,
-  name: string,
-  icon?: React.ReactNode,
-  placeholder?: string,
-  type?:
-    "number"
-    | "text"
-    | "password"
-    | "email"
-    | "date"
-    | "time"
-    | "datetime-local"
-    | "hidden"
-    | "month"
-    | "search"
-    | "tel"
-    | "url"
-    | "week",
-  options?: Obj[],
-  eyeIcon?: React.ReactNode;
-  defaultValue?: any;
-  titleclassName?: string;
-  autoFocus?: boolean;
-  inputClassName?: string;
-}
-
 type Prop = {
   errors: any;
   register: any;
