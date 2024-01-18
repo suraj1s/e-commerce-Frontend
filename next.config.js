@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.dummyjson.com',
+        protocol: "https",
+        hostname: "cdn.dummyjson.com",
       },
     ],
   },
@@ -18,7 +18,7 @@ const nextConfig = {
   generateEtags: false,
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.(".svg"),
+      rule.test?.test?.(".svg")
     );
 
     config.module.rules.push(
@@ -32,7 +32,7 @@ const nextConfig = {
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [/url/] },
         use: ["@svgr/webpack"],
-      },
+      }
     );
     return config;
   },

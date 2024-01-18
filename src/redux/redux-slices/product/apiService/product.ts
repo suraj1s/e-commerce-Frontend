@@ -10,7 +10,9 @@ export const productApiSlice = apiSlice.injectEndpoints({
           limit?: number,
           currentPage?: number,
         }) => ({
-          url: `products?limit=${limit}&skip=${(currentPage * limit)}`,
+          // url: `products?limit=${limit}&skip=${(currentPage * limit)}`,
+          url: `products?_limit=${limit}&_page=${currentPage}`,
+
           method: "GET"
         }),
         providesTags: ["product"]

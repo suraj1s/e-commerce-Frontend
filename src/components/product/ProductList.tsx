@@ -48,7 +48,7 @@ const ProductList = () => {
   [productData , searchedProducts])
 
 
-  const hasMore = ((pageNumber * 10) + 10 ) < finalProducts?.length
+  const hasMore = ((pageNumber * pageLimit) + pageLimit ) < productData?.totalItems
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
     if (isLoading ) return;
@@ -94,4 +94,3 @@ const ProductList = () => {
   )
 }
 export default ProductList
-
