@@ -13,7 +13,7 @@ const CheckoutFormModal = () => {
     isModalOpen={isModalOpen}
     closeModal={() => setIsModalOpen(false)}
     >
-        <CheckoutForm />
+        <CheckoutForm closeModal={()=> setIsModalOpen(false)} />
     </CommonPopup>
     </div>
   )

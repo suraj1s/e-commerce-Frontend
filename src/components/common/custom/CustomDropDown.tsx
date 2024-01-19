@@ -14,7 +14,7 @@ const CustomDropDown = ({
 }: CustomDropDownProp) => {
   return (
     <div>
-      <div className=" relative rounded-lg  bg-gray-50  ">
+      <div className=" relative rounded-lg  bg-gray-50  customInputCSS ">
         <ArrowDownIcon  className = "w-6 h-6 absolute right-2 top-2"/>
         <select
           {...register(inputfield.name)}

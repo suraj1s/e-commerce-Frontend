@@ -7,7 +7,11 @@ import CustomInput from "@/components/common/custom/CustomInput";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const CheckoutForm = () => {
+interface CheckoutFormProps {
+    closeModal: () => void;
+}
+
+const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
   const inputfieldDetails: inputField[] = [
     {
       title: "Full Name",
@@ -218,6 +222,7 @@ const CheckoutForm = () => {
       <div className="col-span-2 my-2 flex items-center justify-end gap-3">
         <CustomButton
           onCLick={() => {
+            closeModal();
             reset();
           }}
           className="!w-fit"
