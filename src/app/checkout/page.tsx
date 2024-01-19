@@ -190,7 +190,7 @@ const Page = () => {
   return (
     <div className="pageContainer">
      
-      <form onSubmit={handleSubmit(onSubmit)} className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative z-0">
+      <form onSubmit={handleSubmit(onSubmit)} className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative ">
         {inputfieldDetails?.map((item, index) =>
           item?.options ? (
             <div key={index} className={`${item?.className} space-y-[6px]`}>
