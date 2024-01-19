@@ -7,37 +7,36 @@ import CustomInput from "@/components/common/custom/CustomInput";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const Page = () => {
-
+const CheckoutForm = () => {
   const inputfieldDetails: inputField[] = [
     {
-        title: "Full Name",
-        name: "full_name",
-        placeholder: "Enter your full name",
-        type: "text",
-        className: "col-span-2",
-        validation: {
-          required: {
-            value: true,
-            message: "Opps! Enter your full name",
-          },
+      title: "Full Name",
+      name: "full_name",
+      placeholder: "Enter your full name",
+      type: "text",
+      className: "col-span-2",
+      validation: {
+        required: {
+          value: true,
+          message: "Opps! Enter your full name",
         },
       },
+    },
 
     {
-        title: "Email",
-        name: "email",
-        placeholder: "Enter your email",
-        type: "text",
-        className: "col-span-2 ",
-        validation: {
-          required: {
-            value: true,
-            RegExp : EMAIL_REGEX,
-            message: "Opps! Enter your email",
-          },
+      title: "Email",
+      name: "email",
+      placeholder: "Enter your email",
+      type: "text",
+      className: "col-span-2 ",
+      validation: {
+        required: {
+          value: true,
+          RegExp: EMAIL_REGEX,
+          message: "Opps! Enter your email",
         },
       },
+    },
     {
       title: "Phone",
       name: "phone",
@@ -52,8 +51,7 @@ const Page = () => {
         },
       },
     },
-    
-  
+
     {
       title: "Country",
       name: "country",
@@ -93,7 +91,7 @@ const Page = () => {
         },
       },
     },
-    
+
     {
       title: "State",
       name: "state",
@@ -147,18 +145,18 @@ const Page = () => {
       },
     },
     {
-        title: "Postal code",
-        name: "postalcode",
-        placeholder: "Enter your postalcode",
-        type: "text",
-        className: "col-span-2 xl:col-span-1",
-        validation: {
-          required: {
-            value: true,
-            message: "Opps! Enter your postalcode",
-          },
+      title: "Postal code",
+      name: "postalcode",
+      placeholder: "Enter your postalcode",
+      type: "text",
+      className: "col-span-2 xl:col-span-1",
+      validation: {
+        required: {
+          value: true,
+          message: "Opps! Enter your postalcode",
         },
       },
+    },
     {
       title: "Street Address",
       name: "streetAddress",
@@ -172,7 +170,6 @@ const Page = () => {
         },
       },
     },
-
   ];
 
   const {
@@ -180,57 +177,56 @@ const Page = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
     reset,
   } = useForm();
 
-  const onSubmit =  (data: any) => {
+  const onSubmit = (data: any) => {
     console.log("data", data);
   };
   return (
-    <div className="pageContainer">
-    
-      <form onSubmit={handleSubmit(onSubmit)} className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative ">
-        {inputfieldDetails?.map((item, index) =>
-          item?.options ? (
-            <div key={index} className={`${item?.className} space-y-[6px]`}>
-              <span className={` text-sm font-medium text-gray-700`}>
-                {item?.name}
-                {item?.validation?.required && (
-                  <span className="text-error-600">*</span>
-                )}
-              </span>
-              <CustomDropDown
-                inputfield={item}
-                errors={errors}
-                register={register}
-              />
-            </div>
-          ) : (
-            <div className={`${item?.className}`} key={index}>
-              <CustomInput
-                inputfield={item}
-                errors={errors}
-                register={register}
-              />
-            </div>
-          ),
-        )}
-        
-        <div className="col-span-2"></div>
-        <div className="col-span-2 my-2 flex items-center justify-end gap-3">
-          <CustomButton
-            onCLick={() => {
-              reset();
-            }}
-            className="!w-fit"
-            title="Cancel"
-          />
-          <CustomButton className="!w-fit" title="Confirm" type="submit"  />
-        </div>
-        </form>
-    </div>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative "
+    >
+      {inputfieldDetails?.map((item, index) =>
+        item?.options ? (
+          <div key={index} className={`${item?.className} space-y-[6px]`}>
+            <span className={` text-sm font-medium text-gray-700`}>
+              {item?.name}
+              {item?.validation?.required && (
+                <span className="text-error-600">*</span>
+              )}
+            </span>
+            <CustomDropDown
+              inputfield={item}
+              errors={errors}
+              register={register}
+            />
+          </div>
+        ) : (
+          <div className={`${item?.className}`} key={index}>
+            <CustomInput
+              inputfield={item}
+              errors={errors}
+              register={register}
+            />
+          </div>
+        )
+      )}
+
+      <div className="col-span-2"></div>
+      <div className="col-span-2 my-2 flex items-center justify-end gap-3">
+        <CustomButton
+          onCLick={() => {
+            reset();
+          }}
+          className="!w-fit"
+          title="Cancel"
+        />
+        <CustomButton className="!w-fit" title="Confirm" type="submit" />
+      </div>
+    </form>
   );
 };
 
-export default Page;
+export default CheckoutForm;
