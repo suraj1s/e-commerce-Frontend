@@ -186,7 +186,7 @@ const CheckoutForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="my-[36px] grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative "
+      className="grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative "
     >
       {inputfieldDetails?.map((item, index) =>
         item?.options ? (
