@@ -72,7 +72,7 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
      { searchText && searchModal && <SearchDropdown inputRef = {inputRef}  setSearchModal = {setSearchModal} searchText = {searchText}/>     }
      {
       searchModal && searchText    && 
-     <div className="w-screen h-screen -z-50 fixed top-0 left-0  popupmodalblur" onClick={()=> setSearchModal(false)} /> 
+     <div className="w-screen h-screen -z-10 fixed top-0 left-0  popupmodalblur" onClick={()=> setSearchModal(false)} /> 
      }
     </div>
   );
