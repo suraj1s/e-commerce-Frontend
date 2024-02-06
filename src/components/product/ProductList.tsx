@@ -39,6 +39,7 @@ const ProductList = () => {
   }, 
   [  productSearchQuery  ])
   
+  console.log(pageNumber , "pagenumber")
   useEffect(() => {
     if(productData?.results === undefined) return;
     setFinalProducts(  [ ...finalProducts ,  ...productData?.results])
@@ -46,7 +47,7 @@ const ProductList = () => {
   [productData ])
 
 
-  const hasMore = ((pageNumber * pageLimit) + pageLimit ) < productData?.totalItems
+  const hasMore = ((pageNumber * pageLimit) + pageLimit ) < productData?.count
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
     if (isLoading ) return;
