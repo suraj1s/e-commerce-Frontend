@@ -1,5 +1,5 @@
 "use client"
-import { useGetProductQuery } from '@/redux/redux-slices/product/apiService/product';
+import { useGetProductQuery } from '@/redux/redux-slices/product/productApi';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 

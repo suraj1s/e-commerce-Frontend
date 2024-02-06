@@ -1,6 +1,7 @@
 
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
+import { productStateType } from "./product"
 
 const initialState : productStateType = {
   productSearchQuery: null ,
