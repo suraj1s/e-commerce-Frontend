@@ -4,7 +4,7 @@ import {
 } from "@reduxjs/toolkit/query/react"
 
 // export const backendurl = process.env.BACKEND_URL || "https://dummyjson.com/"
-export const backendurl = process.env.BACKEND_URL || "http://localhost:8000/api/"
+export const backendurl = process.env.BACKEND_URL || "http://localhost:8000/api/v1/"
 // const backendurl = "http://192.168.1.131:8000/"
 
 const baseQuery = fetchBaseQuery({

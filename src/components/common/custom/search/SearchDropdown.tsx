@@ -1,4 +1,5 @@
-import { useLazySearchProductTitleQuery } from '@/redux/redux-slices/product/apiService/product'
+import { productType } from '@/redux/redux-slices/product/product'
+import { useLazySearchProductTitleQuery } from '@/redux/redux-slices/product/productApi'
 import { setProductSearchQuery } from '@/redux/redux-slices/product/productSlice'
 import { useAppDispatch } from '@/redux/redux-store/hooks'
 import React, { useEffect, useState } from 'react'

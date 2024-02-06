@@ -12,8 +12,8 @@ export const productApiSlice = apiSlice.injectEndpoints({
           currentPage?: number,
           searchQuery?: string | null,
         }) => ({
-          url: `products`,
-          params: { limit, page:currentPage , searchQuery },
+          url: `product/`,
+          params: { limit, offset:currentPage },
           method: "GET"
         }),
         providesTags: ["product"]
@@ -29,7 +29,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
           limit?: number ,
         }) => ({
           url: `products`,
-          params: { limit,  page:0 ,  searchQuery },
+          params: { limit,  page:0  },
           method: "GET"
         }),
         providesTags: ["product"]

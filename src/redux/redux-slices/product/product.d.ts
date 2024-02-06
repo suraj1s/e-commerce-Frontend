@@ -1,3 +1,4 @@
+
 interface productType  {
     id: number;
     title: string;
@@ -12,6 +13,6 @@ interface productType  {
     images: string[];
 }
 
-interface productStateType {
+export interface productStateType {
     productSearchQuery : string | null;
 }

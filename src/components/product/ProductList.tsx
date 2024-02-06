@@ -1,8 +1,9 @@
 "use client"
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ItemCart from './integrate/ItemCart';
-import { useLazyGetProductsQuery } from '@/redux/redux-slices/product/apiService/product';
+import { useLazyGetProductsQuery } from '@/redux/redux-slices/product/productApi';
 import {  useAppSelector } from '@/redux/redux-store/hooks';
+import { productType } from '@/redux/redux-slices/product/product';
 
 const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
@@ -39,8 +40,8 @@ const ProductList = () => {
   [  productSearchQuery  ])
   
   useEffect(() => {
-    if(productData?.products === undefined) return;
-    setFinalProducts(  [ ...finalProducts ,  ...productData?.products])
+    if(productData?.results === undefined) return;
+    setFinalProducts(  [ ...finalProducts ,  ...productData?.results])
   },
   [productData ])
 
