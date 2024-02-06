@@ -24,7 +24,7 @@ const SearchDropdown = ( {setSearchModal , inputRef , searchText} : SearchDropdo
 
    useEffect(() => {
     if(searchedProductTitle   ){
-        setFinalProductTitle( searchedProductTitle.products)    }
+        setFinalProductTitle( searchedProductTitle.results)    }
   },// eslint-disable-next-line react-hooks/exhaustive-deps
    [searchedProductTitle])
 

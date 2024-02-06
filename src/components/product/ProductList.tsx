@@ -12,7 +12,7 @@ const ProductList = () => {
 
   const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
  
-  const [ getProducts ,  {data : productData ,  isLoading, isFetching}] = useLazyGetProductsQuery();
+  const [ getProducts ,  {data : productData ,  isLoading}] = useLazyGetProductsQuery();
 
 // console.log(searchedProducts , "searchedProducts" , productData , "productData" , productSearchQuery , "productSearchQuery" , finalProducts , "finalProducts")
 
@@ -36,13 +36,15 @@ const ProductList = () => {
 
   useEffect(() => {
       setPageNumber(0)
+      setFinalProducts([])
   }, 
   [  productSearchQuery  ])
   
-  console.log(pageNumber , "pagenumber")
   useEffect(() => {
     if(productData?.results === undefined) return;
-    setFinalProducts(  [ ...finalProducts ,  ...productData?.results])
+    if(!isLoading){
+      setFinalProducts(  [ ...finalProducts ,  ...productData?.results])
+    }
   },
   [productData ])
 
@@ -64,7 +66,7 @@ const ProductList = () => {
     <>
     <h1>All products</h1>
     {
-         productSearchQuery && isFetching && <div className=' text-center py-5  text-black font-bold text-3xl'>Searching...</div>}
+         productSearchQuery && isLoading && <div className=' text-center py-5  text-black font-bold text-3xl'>Searching...</div>}
     <div className='grid grid-cols-1 mobile:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 h-fit mobile:px-4  mobile:py-6 gap-y-10 gap-x-10'>
         {
             finalProducts?.map((item , index) => (
@@ -88,7 +90,7 @@ const ProductList = () => {
           
     </div>
     {
-          isFetching && <div className=' text-center py-5  text-black font-bold text-3xl'>Loading...</div>}
+          isLoading && <div className=' text-center py-5  text-black font-bold text-3xl'>Loading...</div>}
     </>
   )
 }
