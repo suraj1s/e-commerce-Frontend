@@ -22,16 +22,17 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
   }
    useEffect(() => {
     if(searchText.length > 1) {
-      const cleartime = setTimeout(() => {
+      const timer = setTimeout(() => {
         setSearchQuery(searchText)
-      }, 100);
+      }, 500);
       return () => {
-        clearTimeout(cleartime)
+        clearTimeout(timer)
       }
     }
     else {
       setSearchQuery(searchText)
     }
+
     },  // eslint-disable-next-line react-hooks/exhaustive-deps 
   [searchText])
 
