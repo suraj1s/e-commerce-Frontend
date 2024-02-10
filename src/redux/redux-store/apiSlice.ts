@@ -62,6 +62,7 @@ return result
     "forgotPassword",
     "product",
     "productDetail",
+    "cart",
   ],
   endpoints: (builder) => ({})
 })
