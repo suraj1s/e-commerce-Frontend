@@ -14,7 +14,6 @@ const Cart = () => {
   const [createCart, { isLoading: createCartLoading }] =
     useCreateCartMutation();
   const [updateCart] = useUpdateCartMutation();
-
   return (
     <div className="mx-auto max-w-7xl text-gray-900  font-bold ">
       <h1 className="text-3xl border-b py-5 my-5 border-gray-200 ">Cart</h1>
@@ -39,7 +38,7 @@ const Cart = () => {
                   name="itemqty"
                   id="itemqty"
                   className="mx-5"
-                  defaultValue={Number(cartData?.quantity)}
+                  defaultValue={item?.quantity}
                 >
                   {Array.from(Array(15).keys()).map((item, index) => (
                     <option key={index} value={item + 1}>
