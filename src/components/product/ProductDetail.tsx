@@ -34,10 +34,10 @@ const ProductDetail = ( {id} : {id : number}) => {
         <p> rating {productData?.description}</p>
 </div>
 <CustomButton  title='Add To Cart' onCLick={()=> {
-  const doesExist = CartData?.results?.some( (item : any) => item.product ===  productData.id)
+  const doesExist = CartData?.results?.some( (item : any) => item.product.id ===  productData.id)
   if(doesExist){
-    const cartItem = CartData?.results?.find( (item : any) => item.product ===  productData.id)
-    const data = {  quantity : cartItem?.quantity + 1}
+    const cartItem = CartData?.results?.find( (item : any) => item.product.id ===  productData.id)
+    const data = { quantity : cartItem?.quantity + 1}
     updateCart({ id : cartItem?.id,  data})
   }
   else {
