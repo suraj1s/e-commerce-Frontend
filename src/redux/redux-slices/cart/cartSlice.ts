@@ -1,22 +1,21 @@
 
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { productStateType } from "./product"
+import { cartStateType } from "./cart"
 
-const initialState : productStateType = {
-  productSearchQuery: null ,
-    
+const initialState : cartStateType = {
+  cartItemCount: 0,
   };
-const products = createSlice({
-  name: "products",
+const carts = createSlice({
+  name: "carts",
   initialState,
   reducers: {
-    setProductSearchQuery: (state, action: PayloadAction<string | null>) => {
-        state.productSearchQuery = action.payload
+    setCartItemCountQuery: (state, action: PayloadAction<number | null>) => {
+        state.cartItemCount = action.payload
     },
    
   }
 })
 
-export default products.reducer
-export const { setProductSearchQuery } = products.actions
+export default carts.reducer
+export const { setCartItemCountQuery } = carts.actions
