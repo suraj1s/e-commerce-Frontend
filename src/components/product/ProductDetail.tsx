@@ -2,10 +2,17 @@
 import { useGetProductQuery } from '@/redux/redux-slices/product/productApi';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
+import CustomButton from '../common/custom/CustomButton';
+import { useCreateCartMutation, useGetcartsQuery, useUpdateCartMutation } from '@/redux/redux-slices/cart/cartApi';
 
 const ProductDetail = ( {id} : {id : number}) => {
   const  {data : productData , isLoading} = useGetProductQuery(id);
+
+  const {data : CartData } = useGetcartsQuery({})
+  const [ createCart , { isLoading : createCartLOading}] = useCreateCartMutation();
+  const [updateCart ] = useUpdateCartMutation();
   // @ts-ignore
+
   const [finalProducts , setFinalProducts ] = useState<productType  >({})
   useEffect(() => {
     if(productData){
@@ -34,6 +41,9 @@ const ProductDetail = ( {id} : {id : number}) => {
         <p> rating {finalProducts?.rating}</p>
         <p> rating {finalProducts?.description}</p>
 </div>
+<CustomButton  title='Add To Cart' onCLick={()=> {
+  CartData?.results.some( item => item.productId === item.id)
+}}/>
 </div>
   )
 }

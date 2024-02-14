@@ -7,11 +7,13 @@ import {
   } from "@reduxjs/toolkit"
   import authUser from "@/redux/redux-slices/auth/authSlice"
   import products from "@/redux/redux-slices/product/productSlice"
+  import carts from "@/redux/redux-slices/cart/cartSlice"
 
   const combineReducer = combineReducers({
     // reducers 
     authUser,
     products,
+    carts,
     [apiSlice.reducerPath]: apiSlice.reducer
   })
   
