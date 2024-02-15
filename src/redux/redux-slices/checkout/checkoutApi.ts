@@ -1,38 +1,72 @@
 import { apiSlice } from "@/redux/redux-store/apiSlice"
 
-export const cartApiSlice = apiSlice.injectEndpoints({
+export const checkoutApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({  
-      getcarts: builder.query({
+      getCheckout: builder.query({
         query: () => ({
           url: `cart/`,
           method: "GET"
         }),
-        providesTags: ["cart"]
+        providesTags: ["checkout"]
       }),
       
-      createCart: builder.mutation({
+      createCheckout: builder.mutation({
         query: (data) => ({
           url: `cart/create/`,
           method: "POST",
           body: data
         }),
-        invalidatesTags: ["cart"]
+        invalidatesTags: ["checkout"]
       }),
 
-      updateCart: builder.mutation({
+      updateCheckout: builder.mutation({
         query: ({ id , data}) => ({
           url: `cart/${id}/update/`,
           method: "PATCH",
           body: data
         }),
-        invalidatesTags: ["cart"]
-      })
+        invalidatesTags: ["checkout"]
+      }),
+
+      getAddress: builder.query({
+        query: () => ({
+          url: `address/`,
+          method: "GET"
+        }),
+        providesTags: ["address"]
+      }),
+
+      createAddress: builder.mutation({
+        query: (data) => ({
+          url: `address/create/`,
+          method: "POST",
+          body: data
+        }),
+        invalidatesTags: ["address"]
+      }),
+
+      updateAddress: builder.mutation({
+        query: ({ id , data}) => ({
+          url: `address/${id}/update/`,
+          method: "PATCH",
+          body: data
+        }),
+        invalidatesTags: ["address"]
+      }),
+
+      deleteAddress: builder.mutation({
+        query: (id) => ({
+          url: `address/${id}/delete/`,
+          method: "DELETE"
+        }),
+        invalidatesTags: ["address"]
+      }),
   })
 })
 
 export const {
-    useUpdateCartMutation,
-    useGetcartsQuery,
-    useCreateCartMutation,
+    useCreateCheckoutMutation,
+    useGetCheckoutQuery,
+    useUpdateCheckoutMutation,
   
-} = cartApiSlice
+} = checkoutApiSlice
