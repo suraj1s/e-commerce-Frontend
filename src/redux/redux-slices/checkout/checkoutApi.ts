@@ -28,7 +28,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
         invalidatesTags: ["checkout"]
       }),
 
-      getAddress: builder.query({
+      getAddress: builder.query<IGetAllAddress , any>({
         query: () => ({
           url: `address/`,
           method: "GET"
@@ -45,7 +45,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
         invalidatesTags: ["address"]
       }),
 
-      updateAddress: builder.mutation({
+      updateAddress: builder.mutation< IGetAddress , any>({
         query: ({ id , data}) => ({
           url: `address/${id}/update/`,
           method: "PATCH",
@@ -68,5 +68,9 @@ export const {
     useCreateCheckoutMutation,
     useGetCheckoutQuery,
     useUpdateCheckoutMutation,
+    useCreateAddressMutation,
+    useGetAddressQuery,
+    useDeleteAddressMutation,
+    useUpdateAddressMutation,
   
 } = checkoutApiSlice

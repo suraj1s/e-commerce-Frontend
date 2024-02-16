@@ -4,6 +4,8 @@ import CommonPopup from "@/components/common/custom/CommonPopup";
 import CustomButton from "@/components/common/custom/CustomButton";
 import CustomDropDown from "@/components/common/custom/CustomDropDown";
 import CustomInput from "@/components/common/custom/CustomInput";
+import { useCreateAddressMutation } from "@/redux/redux-slices/checkout/checkoutApi";
+import { mutationHandler } from "@/utils/mutationalHandler";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -150,7 +152,7 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
     },
     {
       title: "Postal code",
-      name: "postalcode",
+      name: "postal_code",
       placeholder: "Enter your postalcode",
       type: "text",
       className: "col-span-2 xl:col-span-1",
@@ -163,7 +165,7 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
     },
     {
       title: "Street Address",
-      name: "streetAddress",
+      name: "street_address",
       placeholder: "Enter your Street Address",
       type: "text",
       className: "col-span-2",
@@ -175,7 +177,7 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
       },
     },
   ];
-
+  const [createAddress] = useCreateAddressMutation();
   const {
     register,
     handleSubmit,
@@ -185,7 +187,14 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
   } = useForm();
 
   const onSubmit = (data: any) => {
-    console.log("data", data);
+    mutationHandler(
+      createAddress,
+      data,
+      ()=> {
+        closeModal();
+        reset();
+      }
+    )
   };
   return (
     <form

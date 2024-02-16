@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import CustomButton from '../common/custom/CustomButton';
 import { useCreateCartMutation, useGetcartsQuery, useUpdateCartMutation } from '@/redux/redux-slices/cart/cartApi';
+import { mutationHandler } from '@/utils/mutationalHandler';
 
 const ProductDetail = ( {id} : {id : number}) => {
   const  {data : productData , isLoading} = useGetProductQuery(id);
@@ -38,11 +39,21 @@ const ProductDetail = ( {id} : {id : number}) => {
   if(doesExist){
     const cartItem = CartData?.results?.find( (item : any) => item.product.id ===  productData.id)
     const data = { quantity : cartItem?.quantity + 1}
-    updateCart({ id : cartItem?.id,  data})
+    mutationHandler(
+      updateCart,
+      { id : cartItem?.id,  data},
+      ()=> {},
+      "Cart Updated Successfully",
+    )
   }
   else {
     const data = {product : id , quantity : 1}
-    createCart(data)
+    mutationHandler(
+      createCart,
+      data,
+      ()=> {},
+      "Cart Created Successfully",
+    )
   }
 }}/>
 </div>
