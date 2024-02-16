@@ -5,7 +5,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='flex flex-col lg:flex-row space-x-10 space-y-8  container justify-center items-center'>
+    <div className='flex flex-col lg:flex-row space-x-10 space-y-8 pt-10  container justify-center '>
       <div>
       <CheckoutAddressDetail />
       <CheckoutPaymentDetail />

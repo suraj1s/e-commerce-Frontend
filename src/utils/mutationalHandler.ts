@@ -20,7 +20,8 @@ export const mutationHandler = async (
     } else {
       enableToast &&
         toastmessage &&
-        toast.success(response?.data?.message ?? toastmessage);
+        toast.success(toastmessage);
+        // toast.success(response?.data?.message ?? toastmessage);
       onSuccess(response);
       return response;
     }

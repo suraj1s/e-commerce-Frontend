@@ -4,6 +4,7 @@ import './styles/globals.css'
 import Providers from '@/redux/redux-store/Providers'
 import Footers from '@/components/common/header-footer/footer/Footers'
 import Headers from '@/components/common/header-footer/header/Headers'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-background text-gray-600 `  }>
      <Providers>
      <Headers />
+     <Toaster />
        {children}
     <Footers />
       </Providers>
