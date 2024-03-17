@@ -1,23 +1,39 @@
-"use client"
+"use client";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { Logo } from "@/assets/images";
-import CustomInput, { inputField } from "@/components/common/custom/CustomInput";
-import { useCheckUserMutation } from "@/redux/redux-slices/auth/apiService/auth";
-import { toaster } from "@/components/common/custom/Toaster";
+import CustomInput from "@/components/common/custom/CustomInput";
+import { useCreateUserMutation } from "@/redux/redux-slices/auth/apiService/auth";
 import CustomButton from "@/components/common/custom/CustomButton";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+const Cookies = require("js-cookie");
 
-const inputTypeDetails : inputField[] = [
+const inputTypeDetails: inputField[] = [
+  {
+    title: "Username",
+    name: "username",
+    placeholder: "Enter your Username  ",
+    // icon: <Status />,
+    type: "text",
+    validation: {
+      required: " plese enter a valid user name ",
+    },
+  },
   {
     title: "Email",
     name: "email",
     placeholder: "Enter your email address ",
     // icon: <Status />,
     type: "text",
-    validation:{ required : " plese enter a valid email " , pattern : { value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi , 
-    message: "plese enter a valid email "
-  }}
+    validation: {
+      required: " plese enter a valid email ",
+      pattern: {
+        value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+        message: "plese enter a valid email ",
+      },
+    },
   },
   {
     title: "Password",
@@ -26,16 +42,15 @@ const inputTypeDetails : inputField[] = [
 
     // icon: <Status />,
     type: "text",
-    validation:  {
+    validation: {
       required: " plese enter a valid password ",
       pattern: {
-        value:
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+        value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
         message: `- at least 8 characters \n
     - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number \n
     - Can contain special characters`,
       },
-    }
+    },
   },
   {
     title: "Retype Password",
@@ -44,45 +59,49 @@ const inputTypeDetails : inputField[] = [
 
     // icon: <Status />,
     type: "text",
-    validation:  {
+    validation: {
       required: " plese enter a valid password ",
       pattern: {
-        value:
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+        value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
         message: `- at least 8 characters \n
     - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number \n
     - Can contain special characters`,
       },
-    }
-  }
-]
+    },
+  },
+];
 
-const SignUp = () => {  
-  const [checkUser , { isError , isLoading , isSuccess }] = useCheckUserMutation();
+const SignUp = () => {
+  const [crerateUser, { isError, isLoading, isSuccess }] =
+    useCreateUserMutation();
+    const routr = useRouter()
   const onsubmitHandler = async (data: any) => {
-      // const formData = new FormData()
-      // formData.append("name", data.name)
-      // formData.append("status", selectionValue.value)
-      // formData.append("branch", branch)    
-        try {
-          const response: any = await checkUser(data)
-          if (response?.error) {
-            toaster("error", response?.error?.data?.errors[0]?.detail)
-          } else {
-            toaster("success", "Category Updated Successfully")
-          }
-        } catch (error: any) {
-          toaster("error", error?.data?.message ?? "Something went wrong")
-        }
+    // const formData = new FormData()
+    // formData.append("name", data.name)
+    // formData.append("status", selectionValue.value)
+    // formData.append("branch", branch)
+    try {
+      const response: any = await crerateUser(data);
+      if (response?.error) {
+        toast.error("errors", response?.error?.data?.errors[0]?.detail);
+      } else {
+        routr.push("/auth/signin")
+        console.log(response, "response");
+        
+        toast.success(" user loggned successfully");
+      }
+    } catch (error: any) {
+      toast.error("error", error?.data?.message ?? "Something went wrong");
     }
-    const {
-      register,
-      handleSubmit,
-      setValue,
-      formState: { errors }
-    } = useForm()
+  };
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
   return (
-      <div className="container "> 
+    <div className="container ">
       <div className="py-12 text-gray-800  ">
         <div>
           <Image
@@ -95,12 +114,11 @@ const SignUp = () => {
           </h2>
         </div>
         <div className="mt-10 ">
-           <form
-      onSubmit={handleSubmit(onsubmitHandler)}
-      className="space-y-3 max-w-sm mx-auto "
-    >
-      <div className="flex flex-col  gap-y-5 ">
-
+          <form
+            onSubmit={handleSubmit(onsubmitHandler)}
+            className="space-y-3 max-w-sm mx-auto "
+          >
+            <div className="flex flex-col  gap-y-5 ">
               <CustomInput
                 errors={errors}
                 inputfield={inputTypeDetails[0]}
@@ -116,17 +134,20 @@ const SignUp = () => {
                 inputfield={inputTypeDetails[2]}
                 register={register}
               />
- 
-             <CustomButton title="sign up" type="submit" />
-             <div className="flex gap-x-2 items-center">
-              <p>Alerady have account  </p>
-              <Link href={"/auth/signin"} ><p className="text-primary-500  text-sm font-semibold"> Sign In </p> </Link>
-             </div>
+
+              <CustomButton title="sign up" type="submit" />
+              <div className="flex gap-x-2 items-center">
+                <p>Alerady have account </p>
+                <Link href={"/auth/signin"}>
+                  <p className="text-primary-500  text-sm font-semibold">
+                    {" "}
+                    Sign In{" "}
+                  </p>{" "}
+                </Link>
+              </div>
             </div>
-       
-    </form>
+          </form>
         </div>
-     
       </div>
     </div>
   );
