@@ -1,23 +1,29 @@
 "use client";
 import CustomButton from "@/components/common/custom/CustomButton";
 import {
-  useCreateCartMutation,
+  useDeleteCartMutation,
   useGetcartsQuery,
   useUpdateCartMutation,
 } from "@/redux/redux-slices/cart/cartApi";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const Cart = () => {
   const { data: cartData } = useGetcartsQuery({});
-  const [createCart, { isLoading: createCartLoading }] =
-    useCreateCartMutation();
   const [updateCart] = useUpdateCartMutation();
+  const [deleteCart] = useDeleteCartMutation();
+  const subTotal = cartData?.results?.reduce(
+    (acc: number, item: any) => acc + item?.product?.price * item?.quantity,
+    0
+  );
+  const totalItems = cartData?.results?.reduce(
+    (acc: number, item: any) => acc + item?.quantity,
+    0
+  );
   return (
     <div className="mx-auto max-w-7xl text-gray-900  font-bold ">
       <h1 className="text-3xl border-b py-5 my-5 border-gray-200 ">Cart</h1>
-      {cartData?.results?.map((item : any, index : any) => (
+      {cartData?.results?.map((item: any, index: any) => (
         <li key={index} className="flex py-6 gap-x-8">
           <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
             <Image
@@ -39,6 +45,12 @@ const Cart = () => {
                   id="itemqty"
                   className="mx-5"
                   defaultValue={item?.quantity}
+                  onChange={(e) => {
+                    updateCart({
+                      id: item.id,
+                      data: { quantity: +e.target.value },
+                    });
+                  }}
                 >
                   {Array.from(Array(15).keys()).map((item, index) => (
                     <option key={index} value={item + 1}>
@@ -52,6 +64,9 @@ const Cart = () => {
               <p>{item?.product?.price}</p>
               <CustomButton
                 title="remove "
+                onCLick={() => {
+                  deleteCart(item.id);
+                }}
                 className="!bg-transparent !text-primary-700 !w-fit !p-0 shadow-none"
               />
             </div>
@@ -65,8 +80,8 @@ const Cart = () => {
             <p>Total Items</p>
           </div>
           <div>
-            <p> {1000} </p>
-            <p> {10} items </p>
+            <p> {subTotal} </p>
+            <p> {totalItems} items </p>
           </div>
         </div>
         <p className="mt-0.5 text-sm ">

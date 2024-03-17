@@ -1,3 +1,4 @@
+import { productType } from '@/redux/redux-slices/product/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
