@@ -4,7 +4,7 @@ export const cartApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({  
       getcarts: builder.query({
         query: () => ({
-          url: `cart/`,
+          url: 'cart/',
           method: "GET"
         }),
         providesTags: ["cart"]

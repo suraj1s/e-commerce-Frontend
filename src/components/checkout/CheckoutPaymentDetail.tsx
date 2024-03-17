@@ -2,7 +2,10 @@ import React from 'react'
 
 const CheckoutPaymentDetail = () => {
   return (
-    <div>CheckoutPaymentDetail</div>
+    <div>
+      plese add payment details
+      
+    </div>
   )
 }
 

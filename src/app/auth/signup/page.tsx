@@ -8,7 +8,6 @@ import CustomButton from "@/components/common/custom/CustomButton";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-const Cookies = require("js-cookie");
 
 const inputTypeDetails: inputField[] = [
   {
@@ -88,7 +87,6 @@ const SignUp = () => {
       } else {
         routr.push("/auth/signin");
         console.log(response, "response");
-
         toast.success(" user created successfully");
       }
     } catch (error: any) {

@@ -1,3 +1,4 @@
+"use client"
 import CheckoutAddressDetail from '@/components/checkout/CheckoutAddressDetail'
 import CheckoutCartDetail from '@/components/checkout/CheckoutCartDetail'
 import CheckoutPaymentDetail from '@/components/checkout/CheckoutPaymentDetail'
@@ -8,16 +9,18 @@ const page = () => {
   return (
     <div className=''>
     <div className='flex flex-col lg:flex-row space-x-10 space-y-8 pt-10  container justify-center '>
-      <div>
+      <div className='flex flex-col gap-5 h-fit lg:sticky top-28'>
       <CheckoutAddressDetail />
-      {/* <CheckoutPaymentDetail /> */}
+      <CheckoutPaymentDetail />
       </div>
       <div >
         <CheckoutCartDetail />
       </div>
     </div>
 
-    <CustomButton title='Place Order' className='!w-fit mx-auto my-10' />
+    <CustomButton title='Place Order' className='!w-fit mx-auto my-10' onCLick={()=> {
+      console.log("order placed")
+    }} />
     </div>
   )
 }
