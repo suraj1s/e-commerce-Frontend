@@ -7,6 +7,7 @@ import { useCheckUserMutation } from "@/redux/redux-slices/auth/apiService/auth"
 import CustomButton from "@/components/common/custom/CustomButton";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 const Cookies = require("js-cookie");
 const inputTypeDetails: inputField[] = [
   {
@@ -40,8 +41,8 @@ const inputTypeDetails: inputField[] = [
 
 const SignIn = () => {
   const [checkUser, { isError, isLoading, isSuccess }] = useCheckUserMutation();
+  const router = useRouter();
   const onsubmitHandler = async (data: any) => {
-
     console.log(data , "data")
     try {
       const response: any = await checkUser(data);
@@ -49,9 +50,10 @@ const SignIn = () => {
         toast.error("errors", response?.error?.data?.errors[0]?.detail);
       } else {
         console.log(response, "response");
-        Cookies.set("access_token", response?.data?.access);
-        Cookies.set("refresh_token", response?.data?.refresh);
+        Cookies.set("access_token", response?.data?.access_token);
+        Cookies.set("refresh_token", response?.data?.refresh_token);
         toast.success(" user loggned successfully");
+        router.push("/");
       }
     } catch (error: any) {
       toast.error("error", error?.data?.message ?? "Something went wrong");

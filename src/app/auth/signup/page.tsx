@@ -74,21 +74,22 @@ const inputTypeDetails: inputField[] = [
 const SignUp = () => {
   const [crerateUser, { isError, isLoading, isSuccess }] =
     useCreateUserMutation();
-    const routr = useRouter()
+  const routr = useRouter();
   const onsubmitHandler = async (data: any) => {
     // const formData = new FormData()
     // formData.append("name", data.name)
     // formData.append("status", selectionValue.value)
     // formData.append("branch", branch)
+    console.log(data, "data");
     try {
-      const response: any = await crerateUser(data);
+      const response: any = await crerateUser({ signUpData: data });
       if (response?.error) {
         toast.error("errors", response?.error?.data?.errors[0]?.detail);
       } else {
-        routr.push("/auth/signin")
+        routr.push("/auth/signin");
         console.log(response, "response");
-        
-        toast.success(" user loggned successfully");
+
+        toast.success(" user created successfully");
       }
     } catch (error: any) {
       toast.error("error", error?.data?.message ?? "Something went wrong");
