@@ -8,7 +8,7 @@ const CheckoutFormModal = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <div>
-    <CustomButton title='Add New' onCLick={()=> setIsModalOpen(true)}/>
+    <CustomButton title='Add New Address' className='!w-fit' onCLick={()=> setIsModalOpen(true)}/>
     <CommonPopup  
     isModalOpen={isModalOpen}
     closeModal={() => setIsModalOpen(false)}

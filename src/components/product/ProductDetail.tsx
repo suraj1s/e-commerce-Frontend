@@ -47,7 +47,7 @@ const ProductDetail = ( {id} : {id : number}) => {
     )
   }
   else {
-    const data = {product : id , quantity : 1}
+    const data = {products : id , quantity : 1}
     mutationHandler(
       createCart,
       data,
