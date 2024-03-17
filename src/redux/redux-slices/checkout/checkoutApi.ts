@@ -4,15 +4,15 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({  
       getCheckout: builder.query({
         query: () => ({
-          url: `cart/`,
+          url: `checkout/`,
           method: "GET"
         }),
         providesTags: ["checkout"]
       }),
       
       createCheckout: builder.mutation({
-        query: (data) => ({
-          url: `cart/create/`,
+        query: ({data}: {data : ICreateCheckout}) => ({
+          url: `checkout/create/`,
           method: "POST",
           body: data
         }),
@@ -21,7 +21,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
 
       updateCheckout: builder.mutation({
         query: ({ id , data}) => ({
-          url: `cart/${id}/update/`,
+          url: `checkout/${id}/update/`,
           method: "PATCH",
           body: data
         }),
@@ -61,6 +61,14 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
         }),
         invalidatesTags: ["address"]
       }),
+
+      getPaymentOption: builder.query<IPaymentOption , any>({
+        query: () => ({
+          url: `payment_options/`,
+          method: "GET"
+        }),
+        providesTags: ["payment"]
+      }),
   })
 })
 
@@ -72,5 +80,6 @@ export const {
     useGetAddressQuery,
     useDeleteAddressMutation,
     useUpdateAddressMutation,
+    useGetPaymentOptionQuery
   
 } = checkoutApiSlice

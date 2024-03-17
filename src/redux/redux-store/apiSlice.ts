@@ -65,6 +65,7 @@ return result
     "cart",
     "checkout",
     "address",
+    "payment"
   ],
   endpoints: (builder) => ({})
 })

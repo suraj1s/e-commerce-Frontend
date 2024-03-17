@@ -2,14 +2,12 @@
 import CustomButton from "@/components/common/custom/CustomButton";
 import {
   useDeleteCartMutation,
-  useGetcartsQuery,
   useUpdateCartMutation,
 } from "@/redux/redux-slices/cart/cartApi";
 import Image from "next/image";
 import React from "react";
 
-const Cart = () => {
-  const { data: cartData } = useGetcartsQuery({});
+const Cart = ({cartData}: any) => {
   const [updateCart] = useUpdateCartMutation();
   const [deleteCart] = useDeleteCartMutation();
   const subTotal = cartData?.results?.reduce(

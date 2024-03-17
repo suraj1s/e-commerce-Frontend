@@ -1,23 +1,3 @@
-const data = {
-    "count": 123,
-    "next": "http://api.example.org/accounts/?offset=400&limit=100",
-    "previous": "http://api.example.org/accounts/?offset=200&limit=100",
-    "results": [
-      {
-        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-        "created_at": "2024-02-16T15:08:36.269Z",
-        "updated_at": "2024-02-16T15:08:36.269Z",
-        "full_name": "string",
-        "email": "user@example.com",
-        "phone": "string",
-        "country": "string",
-        "state": "string",
-        "city": "string",
-        "postal_code": "string",
-        "street_address": "string"
-      }
-    ]
-  }
 
 interface IGetAddress {
     id: string;
@@ -38,4 +18,25 @@ interface IGetAllAddress  {
     next: string;
     previous: string;
     results: IGetAddress[];
+}
+
+interface ICreateCheckout {
+    address: string;
+    payment: string;
+    item : string;
+}
+
+
+interface IPaymentOption {
+    count: number;
+    next: string;
+    previous: string;
+    results: {
+        id: string;
+        created_at: string;
+        updated_at: string;
+        payment_method: string;
+        payment_description: string;
+        payment_image: string;
+    }[];
 }
