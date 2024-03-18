@@ -20,9 +20,9 @@ const Header = () => {
       <Search  placeholder='Search Product '  />
 
       </div>
-      <Link  href={"/profile"} >   Profile</Link >
-      <Link  href={"/return-and-order"} >  Return <span className='whitespace-nowrap'> and Order </span> </Link >
-      <Link href={"/cart"}  className='flex gap-x-1 relative '>
+      <Link  href={"/dashboard/profile"} >   Profile</Link >
+      <Link  href={"/dashboard/return-and-order"} >  Return <span className='whitespace-nowrap'> and Order </span> </Link >
+      <Link href={"/dashboard/cart"}  className='flex gap-x-1 relative '>
         <span>
          Cart
         </span>

@@ -2,6 +2,15 @@ import { apiSlice } from "@/redux/redux-store/apiSlice"
 
 export const checkoutApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({  
+
+    createPayment: builder.mutation({
+      query: ({data}: {data : ICreatePayment}) => ({
+        url: `payment/create/`,
+        method: "POST",
+        body: data
+      }),
+      invalidatesTags: ["payment"]
+    }),
       getCheckout: builder.query({
         query: () => ({
           url: `checkout/`,
@@ -67,7 +76,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
           url: `payment_options/`,
           method: "GET"
         }),
-        providesTags: ["payment"]
+        providesTags: ["paymentOptions"]
       }),
   })
 })
@@ -80,6 +89,7 @@ export const {
     useGetAddressQuery,
     useDeleteAddressMutation,
     useUpdateAddressMutation,
-    useGetPaymentOptionQuery
+    useGetPaymentOptionQuery,
+    useCreatePaymentMutation,
   
 } = checkoutApiSlice

@@ -8,6 +8,7 @@ import CustomButton from "@/components/common/custom/CustomButton";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { PASSWORD_REGEX } from "@/components/common/constants";
 
 const inputTypeDetails: inputField[] = [
   {
@@ -29,7 +30,7 @@ const inputTypeDetails: inputField[] = [
     validation: {
       required: " plese enter a valid email ",
       pattern: {
-        value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+        value: PASSWORD_REGEX,
         message: "plese enter a valid email ",
       },
     },

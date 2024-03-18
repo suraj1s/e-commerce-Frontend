@@ -36,6 +36,7 @@ const ProductDetail = ( {id} : {id : number}) => {
 </div>
 <CustomButton  title='Add To Cart' onCLick={()=> {
   const doesExist = CartData?.results?.some( (item : any) => item.product.id ===  productData.id)
+  console.log(doesExist, "doesExist")
   if(doesExist){
     const cartItem = CartData?.results?.find( (item : any) => item.product.id ===  productData.id)
     const data = { quantity : cartItem?.quantity + 1}
@@ -47,7 +48,7 @@ const ProductDetail = ( {id} : {id : number}) => {
     )
   }
   else {
-    const data = {products : id , quantity : 1}
+    const data = {product : id , quantity : 1}
     mutationHandler(
       createCart,
       data,

@@ -8,6 +8,7 @@ import CustomButton from "@/components/common/custom/CustomButton";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { PASSWORD_REGEX } from "@/components/common/constants";
 const Cookies = require("js-cookie");
 const inputTypeDetails: inputField[] = [
   {
@@ -30,7 +31,7 @@ const inputTypeDetails: inputField[] = [
     validation: {
       required: " plese enter a valid password ",
       pattern: {
-        value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+        value: PASSWORD_REGEX,
         message: `- at least 8 characters \n
     - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number \n
     - Can contain special characters`,

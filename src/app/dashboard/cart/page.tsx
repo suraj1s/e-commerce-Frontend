@@ -90,7 +90,7 @@ const Cart = () => {
         <CustomButton
           title="Checkout"
           className="!w-fit mx-auto my-4"
-          path="/checkout"
+          path="/dashboard/checkout"
         />
         <CustomButton
           title="continue shopping "

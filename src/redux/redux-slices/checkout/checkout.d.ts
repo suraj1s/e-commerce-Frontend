@@ -23,9 +23,17 @@ interface IGetAllAddress  {
 interface ICreateCheckout {
     address: string;
     payment: string;
-    item : string;
+    items : [string];
 }
 
+
+
+interface ICreatePayment {
+    payment_status: string;
+    payment_amount: string;
+    payment_reference: string;
+    payment_method: string;
+}
 
 interface IPaymentOption {
     count: number;
