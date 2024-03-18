@@ -4,7 +4,10 @@ const CheckoutPaymentDetail = ({
   paymentOptions,
 }: any) => {
   return (
+    <div className="flex flex-col space-y-5">
+    <p>Plese Choose a Payment Option </p>
     <div className=" flex flex-wrap gap-5 ">
+
       {paymentOptions?.results?.map((item: any) => (
         <div
           key={item.id}
@@ -35,6 +38,7 @@ const CheckoutPaymentDetail = ({
           </label>
         </div>
       ))}
+    </div>
     </div>
   );
 };

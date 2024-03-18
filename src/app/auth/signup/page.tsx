@@ -102,7 +102,7 @@ const SignUp = () => {
   } = useForm();
   return (
     <div className="container ">
-      <div className="py-12 text-primary-800  ">
+      <div className="py-12   ">
         <div>
           <Image
             className="mx-auto h-20 w-20"
@@ -139,7 +139,7 @@ const SignUp = () => {
               <div className="flex gap-x-2 items-center">
                 <p>Alerady have account </p>
                 <Link href={"/auth/signin"}>
-                  <p className="text-primary-500  text-sm font-semibold">
+                  <p className="text-blue-400  text-sm font-semibold">
                     {" "}
                     Sign In{" "}
                   </p>{" "}

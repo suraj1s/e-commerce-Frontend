@@ -199,15 +199,15 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative "
+      className="grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative  z-20"
     >
       {inputfieldDetails?.map((item, index) =>
         item?.options ? (
           <div key={index} className={`${item?.className} space-y-[6px]`}>
-            <span className={` text-sm font-medium text-primary-700`}>
+            <span className={` text-sm font-medium `}>
               {item?.name}
               {item?.validation?.required && (
-                <span className="text-error-600">*</span>
+                <span className="text-red-600">*</span>
               )}
             </span>
             <CustomDropDown

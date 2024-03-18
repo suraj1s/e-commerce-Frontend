@@ -68,7 +68,7 @@ const SignIn = () => {
   } = useForm();
   return (
     <div className="container ">
-      <div className="py-12 text-primary-800  ">
+      <div className="py-12">
         <div>
           <Image
             className="mx-auto h-20 w-20"
@@ -97,7 +97,7 @@ const SignIn = () => {
                   register={register}
                 />
                 <Link href={"/auth/forget-password"}>
-                  <p className="text-sm font-medium text-right text-primary-500 hover:text-primary-700 pt-2">
+                  <p className="text-sm font-medium text-right text-blue-300 hover:text-blue-500 pt-2">
                     Forget your password?
                   </p>
                 </Link>
@@ -106,7 +106,7 @@ const SignIn = () => {
               <div className="flex gap-x-2 items-center">
                 <p>Don&lsquo;t have account </p>
                 <Link href={"/auth/signup"}>
-                  <p className="text-primary-500  text-sm font-semibold">
+                  <p className="text-blue-400  text-sm font-semibold">
                     {" "}
                     Sign Up{" "}
                   </p>{" "}

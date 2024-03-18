@@ -22,7 +22,7 @@ const CommonPopup = ({
       <div
         className={`${className} ${
           isModalOpen ? "translate-y-0" : "translate-y-3"
-        } animation-fade-in z-50 w-full max-w-xl rounded-xl bg-white p-6 shadow-xl duration-300`}
+        } animation-fade-in z-50 w-full max-w-xl rounded-xl bg-primary-700 p-6 shadow-xl duration-300`}
       >
         {children}
       </div>

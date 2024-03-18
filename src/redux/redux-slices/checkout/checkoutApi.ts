@@ -39,7 +39,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
 
       getAddress: builder.query<IGetAllAddress , any>({
         query: () => ({
-          url: `address/`,
+          url: `checkout/address/`,
           method: "GET"
         }),
         providesTags: ["address"]
@@ -47,7 +47,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
 
       createAddress: builder.mutation({
         query: (data) => ({
-          url: `address/create/`,
+          url: `checkout/address/create/`,
           method: "POST",
           body: data
         }),
@@ -56,7 +56,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
 
       updateAddress: builder.mutation< IGetAddress , any>({
         query: ({ id , data}) => ({
-          url: `address/${id}/update/`,
+          url: `checkout/address/${id}/update/`,
           method: "PATCH",
           body: data
         }),
@@ -65,7 +65,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
 
       deleteAddress: builder.mutation({
         query: (id) => ({
-          url: `address/${id}/delete/`,
+          url: `checkout/address/${id}/delete/`,
           method: "DELETE"
         }),
         invalidatesTags: ["address"]
@@ -73,7 +73,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
 
       getPaymentOption: builder.query<IPaymentOption , any>({
         query: () => ({
-          url: `payment_options/`,
+          url: `payment/payment_options/`,
           method: "GET"
         }),
         providesTags: ["paymentOptions"]

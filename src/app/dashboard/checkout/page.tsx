@@ -72,9 +72,9 @@ const Page = () => {
   };
 
   return (
-    <div className="">
-      <div className="flex flex-col lg:flex-row space-x-10 space-y-8 pt-10  container justify-center ">
-        <div className="flex flex-col gap-5 h-fit lg:sticky top-16">
+    <div >
+      <div className="flex flex-col lg:flex-row space-x-10 space-y-8 pt-10  container  ">
+        <div className="flex  flex-col gap-5 h-fit lg:sticky top-16">
           <CheckoutAddressDetail
             setAddressOption={setAddressOption}
             addressOption={addressOption}
@@ -86,7 +86,7 @@ const Page = () => {
             paymentOptions={paymentOptions}
           />
         </div>
-        <div>
+        <div className="">
           <CheckoutCartDetail cartData={cartData} />
         </div>
       </div>
