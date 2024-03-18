@@ -11,6 +11,7 @@ import {
   useGetPaymentOptionQuery,
 } from "@/redux/redux-slices/checkout/checkoutApi";
 import { mutationHandler } from "@/utils/mutationalHandler";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
@@ -23,6 +24,8 @@ const Page = () => {
 
   const [paymentOption, setPaymentOption] = useState("");
   const [addressOption, setAddressOption] = useState("");
+
+  const router = useRouter();
   useEffect(() => {
     if (paymentOptions?.results[0]?.id) {
       setPaymentOption(paymentOptions?.results[0]?.id);
@@ -32,6 +35,11 @@ const Page = () => {
     }
   }, [paymentOptions, addressOptions]);
 
+  useEffect(() => {
+    console.log(cartData, "cartData");
+    cartData?.results.length === 0 &&  router.push("/dashboard");
+  }, [cartData])
+  
   const handelCheckout = async () => {
     const paymentData = {
       payment_status: "pending",
@@ -52,7 +60,7 @@ const Page = () => {
     const checkoutData = {
       address: addressOption,
       payment: payment?.data?.id,
-      items: cartData?.results?.map((item: any) => item.id),
+      checkout_items: cartData?.results?.map((item: any) => item.id),
     };
     console.log(checkoutData, "checkoutData")
     const checkout = await mutationHandler(

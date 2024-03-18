@@ -41,7 +41,7 @@ const Cart = ({cartData}: any) => {
                 <select
                   name="itemqty"
                   id="itemqty"
-                  className="mx-5"
+                  className="mx-5 bg-primary-900" 
                   defaultValue={item?.quantity}
                   onChange={(e) => {
                     updateCart({
@@ -65,7 +65,7 @@ const Cart = ({cartData}: any) => {
                 onCLick={() => {
                   deleteCart(item.id);
                 }}
-                className="!bg-transparent !w-fit !p-0 shadow-none"
+                className="!bg-transparent !w-fit !py-1 !px-2 shadow-none"
               />
             </div>
           </div>

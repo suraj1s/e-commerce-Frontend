@@ -6,7 +6,8 @@ import {
   useUpdateCartMutation,
 } from "@/redux/redux-slices/cart/cartApi";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const Cart = () => {
   const { data: cartData } = useGetcartsQuery({});
@@ -16,6 +17,11 @@ const Cart = () => {
     (acc: number, item: any) => acc + item?.product?.price * item?.quantity,
     0
   );
+  const router = useRouter();
+  useEffect(() => {
+    console.log(cartData, "cartData");
+    cartData?.results.length === 0 &&  router.push("/dashboard");
+  }, [cartData])
   const totalItems = cartData?.results?.reduce(
     (acc: number, item: any) => acc + item?.quantity,
     0
@@ -43,7 +49,8 @@ const Cart = () => {
                 <select
                   name="itemqty"
                   id="itemqty"
-                  className="mx-5"
+                  className="mx-5 bg-primary-900"
+                  
                   defaultValue={item?.quantity}
                   onChange={(e) => {
                     updateCart({
@@ -63,11 +70,11 @@ const Cart = () => {
             <div className="flex flex-col gap-y-6">
               <p>{item?.product?.price}</p>
               <CustomButton
-                title="remove "
+                title="remove"
                 onCLick={() => {
                   deleteCart(item.id);
                 }}
-                className="!bg-transparent  !w-fit !p-0 shadow-none"
+                className="!w-fit !py-1 !px-2 shadow-none"
               />
             </div>
           </div>

@@ -25,7 +25,7 @@ export const checkoutApiSlice = apiSlice.injectEndpoints({
           method: "POST",
           body: data
         }),
-        invalidatesTags: ["checkout"]
+        invalidatesTags: ["checkout" , "cart"]
       }),
 
       updateCheckout: builder.mutation({

@@ -23,7 +23,7 @@ interface IGetAllAddress  {
 interface ICreateCheckout {
     address: string;
     payment: string;
-    items : [string];
+    checkout_items : [string];
 }
 
 
