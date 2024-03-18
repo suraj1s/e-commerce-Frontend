@@ -29,10 +29,10 @@ const CustomInput = ({
       <div className="space-y-2">
         {
           inputfield.title &&
-        <span className={`${inputfield.titleclassName} text-base font-medium text-gray-700`}>
+        <span className={`${inputfield.titleclassName} text-base font-medium `}>
           {inputfield.title}
           {inputfield?.validation?.required?.value && inputfield.title && (
-            <span className="text-error-600">*</span>
+            <span className="text-red-600">*</span>
           )}
         </span>
         }
@@ -52,7 +52,7 @@ const CustomInput = ({
             defaultValue={inputfield.defaultValue}
             autoComplete="new-password"
             placeholder={inputfield.placeholder}
-            className={` ${inputfield.inputClassName} w-full text-base text-gray-500 outline-none placeholder:text-sm`}
+            className={` ${inputfield.inputClassName} w-full text-base text-primary-600 outline-none placeholder:text-sm`}
           />
           {inputfield.eyeIcon && (
             <div className="absolute right-3 top-0 flex h-full cursor-pointer items-center justify-center">

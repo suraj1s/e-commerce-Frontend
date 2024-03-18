@@ -8,6 +8,11 @@ interface SignInDataType {
     email : string,
     password : string,
 }
+interface SignupDataType {
+    email : string,
+    password : string,
+    username : string,
+}
 
 interface ResetPasswordType {
     email : string,

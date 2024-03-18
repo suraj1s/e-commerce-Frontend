@@ -9,14 +9,10 @@ const ProductList = () => {
   const [finalProducts , setFinalProducts ] = useState<productType[]>([])
   const pageLimit = 10;
   const [pageNumber, setPageNumber] = useState(0)
-
   const productSearchQuery = useAppSelector(state => state.products.productSearchQuery)
  
   const [ getProducts ,  {data : productData ,  isLoading}] = useLazyGetProductsQuery();
 
-// console.log(searchedProducts , "searchedProducts" , productData , "productData" , productSearchQuery , "productSearchQuery" , finalProducts , "finalProducts")
-
-  // fetch all products 
   useEffect(() => {
     if(productSearchQuery === null || productSearchQuery === ""){
       getProducts({
@@ -47,13 +43,10 @@ const ProductList = () => {
     }
   },
   [productData ])
-
-
   const hasMore = ((pageNumber * pageLimit) + pageLimit ) < productData?.count
   const observer = useRef<IntersectionObserver | null>(null);
   const lastItemElementRef = useCallback((node: HTMLElement | null) => {
     if (isLoading ) return;
-    // if(searchedProducts?.products.length !== 0 && productSearchQuery === "")  return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore && !isLoading) {
@@ -62,6 +55,8 @@ const ProductList = () => {
     });
     if (node) observer.current.observe(node);
   }, [ hasMore , isLoading]);
+
+  
   return (
     <>
     <h1>All products</h1>

@@ -34,11 +34,11 @@ const SearchDropdown = ( {setSearchModal , inputRef , searchText} : SearchDropdo
     setSearchModal(false)
    }
   return (
-    <div className='absolute bg-gray-100 text-gray-700 mt-1 rounded-xl  h-fit w-full px-6 flex flex-col  '>
+    <div className='absolute bg-primary-100 text-primary-700 mt-1 rounded-xl  h-fit w-full px-6 flex flex-col  '>
         {
             finalProductTitle.map( (data , i) => (
                 <div key={i}  >
-                    <h1 className='border-b-[1px] py-3 hover:cursor-pointer  border-gray-300' onClick={ () => hendelSearch(data)}>
+                    <h1 className='border-b-[1px] py-3 hover:cursor-pointer  border-primary-300' onClick={ () => hendelSearch(data)}>
                     {data.title}
                     </h1>
                 </div>

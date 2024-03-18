@@ -24,7 +24,7 @@ const CustomButton = ({
   return path ? (
     <Link
       href={path}
-      className={`flex w-full items-center justify-center gap-2 rounded-lg bg-primary-700 px-[18px] py-[10px] text-base font-semibold text-white shadow-sm ${
+      className={`flex w-full items-center text-blue-400 justify-center gap-2 rounded-lg bg-primary-800 hover:bg-primary-900 hover:text-blue-500 px-[18px] border-primary-200 border py-[10px] text-base font-semibold   shadow-sm ${
         className && className
       }`}
     >
@@ -36,7 +36,7 @@ const CustomButton = ({
       disabled={disabled}
       onClick={onCLick}
       type={type}
-      className={`flex w-full items-center justify-center gap-2 rounded-lg bg-primary-700 px-[18px] py-[10px] text-base font-semibold text-white shadow-sm ${
+      className={`flex w-full items-center justify-center hover:bg-primary-800 hover:text-primary-100 gap-2 rounded-lg bg-primary-900 px-[18px] py-[10px] border-primary-200 border text-base font-semibold   shadow-sm ${
         className && className
       }`}
     >

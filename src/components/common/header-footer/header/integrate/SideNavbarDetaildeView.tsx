@@ -16,8 +16,8 @@ const SideNavbarDetaildeView = ( {data  , isSideNavbarLink, setIsSideNavbarLink 
   return (
         isSideNavbarLink && 
 
-    <div className='absolute left-0 top-0   h-screen w-80 bg-gray-100 text-gray-900 z-20 '>
-        <div className='flex px-8 gap-x-2 font-semibold py-5 hover:cursor-pointer hover:bg-gray-300 uppercase' onClick={() => setIsSideNavbarLink(false)}>
+    <div className='absolute left-0 top-0   h-screen w-80 bg-primary-100 text-primary-900 z-20 '>
+        <div className='flex px-8 gap-x-2 font-semibold py-5 hover:cursor-pointer hover:bg-primary-300 uppercase' onClick={() => setIsSideNavbarLink(false)}>
             <ArrowLeft />
             <p>Main menu</p>
         </div>

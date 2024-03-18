@@ -10,31 +10,31 @@ export const authApiSlice = apiSlice.injectEndpoints({
     //   providesTags: ["authUser"]
     // }),
     createUser: builder.mutation({
-      query: (signInData : SignInDataType ) => ({
-        url: `auth/signup`,
+      query: ({signUpData }: {signUpData : SignupDataType} ) => ({
+        url: `auth/signup/`,
         method: "POST",
-        signInData 
+        body : signUpData 
       }),
       invalidatesTags: ["authUser"]
     }),   
     checkUser: builder.mutation({
       query: (signInData : SignInDataType ) => ({
-        url: `auth/login`,
+        url: `auth/login/`,
         method: "POST",
-        signInData 
+        body : signInData 
       }),
       invalidatesTags: ["authUser"]
     }), 
     checkAuthToken: builder.query({
         query: () => ({
-          url: `auth/login`,
+          url: `auth/login/`,
           method: "GET"
         }),
         providesTags: ["authUser"]
       }),  
     signOut: builder.query({
         query: () => ({
-          url: `auth/logout`,
+          url: `auth/logout/`,
           method: "GET"
         }),
         providesTags: ["authUser"]

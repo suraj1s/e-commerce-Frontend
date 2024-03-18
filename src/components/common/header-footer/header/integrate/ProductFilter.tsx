@@ -28,14 +28,14 @@ const ProductFilter = () => {
   return (
         <div className=' relative  font-medium '>
             {isFilterOpen && <div className='h-screen w-screen fixed top-0 left-0  ' onClick={()=> setIsFilterOpen(false)} />  }
-       <div className='bg-gray-300 text-gray-800 px-4 py-1 rounded-2xl absolute whitespace-nowrap  right-8 -top-4'>
+       <div className='bg-primary-300 text-primary-800 px-4 py-1 rounded-2xl absolute whitespace-nowrap  right-8 -top-4'>
         {
             isFilterOpen ?
             <div className=' text-sm  rounded-2xl  transition-all ' >
                 {
                     filterItems.map((item, index) => { 
                         return (
-                        <div key={index} className={` hover:cursor-pointer border-b-[1px] border-gray-200   p-1`} onClick={()=> handelFilter(item)}>
+                        <div key={index} className={` hover:cursor-pointer border-b-[1px] border-primary-200   p-1`} onClick={()=> handelFilter(item)}>
                            
                             <p  className={`${filterTitle.name === item.name ? "!font-bold !text-black !text-base " : ''} `}>{item.name}</p>
                         </div>
@@ -49,7 +49,7 @@ const ProductFilter = () => {
             <p>
           Sort By:  {filterTitle.name} 
             </p>
-        <ArrowDownIcon className = ' h-6 text-gray-800 ' />
+        <ArrowDownIcon className = ' h-6 text-primary-800 ' />
         </div>
         }
 

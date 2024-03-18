@@ -92,7 +92,7 @@ const Pagination = ({ page, setCurrentButton, currentButton }: Props) => {
         {/* next and previoius n */}
         {/* Previous Button */}
         <button
-          className="hidden rounded-lg border border-gray-300  bg-white px-[14px] py-2 shadow-sm sm:block"
+          className="hidden rounded-lg border border-primary-300  bg-white px-[14px] py-2 shadow-sm sm:block"
           onClick={() =>
             setCurrentButton((prev: any) => (prev <= 1 ? prev : prev - 1))
           }
@@ -113,7 +113,7 @@ const Pagination = ({ page, setCurrentButton, currentButton }: Props) => {
                 className={`+ grid h-10 w-10 cursor-pointer place-content-center text-sm ${
                   currentButton === item
                     ? "rounded-lg bg-[#F9F5FF] font-medium text-[#7F56D9] "
-                    : "text-text-gray-500 "
+                    : "text-text-primary-500 "
                 }`}
                 onClick={() => setCurrentButton(item)}
               >
@@ -124,7 +124,7 @@ const Pagination = ({ page, setCurrentButton, currentButton }: Props) => {
         </div>
         {/* Next Button */}
         <button
-          className=" hidden rounded-lg border border-gray-300 bg-white px-[14px] py-2 shadow-sm sm:block"
+          className=" hidden rounded-lg border border-primary-300 bg-white px-[14px] py-2 shadow-sm sm:block"
           onClick={() =>
             setCurrentButton((prev: any) =>
               prev >= numberOfPages.length ? prev : prev + 1,

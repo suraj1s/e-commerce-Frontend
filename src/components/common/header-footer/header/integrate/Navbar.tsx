@@ -21,7 +21,7 @@ const Navbar = () => {
   ]
   const [isSideNavbarOpen, setIsSideNavbarOpen] = useState(false)
   return (
-    <div className='bg-gray-700 text-gray-300'>
+    <div className='bg-primary-700 text-primary-300'>
     <div className='flex container font-semibold flex-wrap justify-between py-3 capitalize items-center'>
       <div className='flex gap-x-5  flex-wrap '>
       <div className='flex gap-x-2  items-center hover:cursor-pointer' onClick={()=> setIsSideNavbarOpen((prev) => !prev)}>

@@ -54,7 +54,7 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
     }
   }
   return (
-    <div className={ ` ${ className } relative w-full text-gray-500`}>
+    <div className={ ` ${ className } relative w-full text-primary-500`}>
       <SearchIcon className={ ` absolute bottom-0 left-2 top-0 m-auto h-[20px] w-[20px]`}/>
       <input
         type="text"
@@ -62,7 +62,7 @@ const Search = ({placeholder = "Search", className } : SearchProps) => {
         onChange={(e) => hendelChange(e) }
         onKeyUp={(e) => handelSpecialKey(e) }
         placeholder={placeholder }
-        className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-gray-700 outline-none"
+        className="customInputCSS w-full px-[14px] py-[10px] pl-[35px] text-primary-700 outline-none"
       />
       {
         searchText.length > 0 && searchQuery.length > 0 &&
