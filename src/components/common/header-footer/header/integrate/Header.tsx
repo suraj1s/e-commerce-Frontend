@@ -9,7 +9,7 @@ import React from 'react'
 const Header = () => {
   const { data: cartData } = useGetcartsQuery({});
   return (
-    <div className='bg-gray-900 text-gray-100'>
+    <div className='bg-primary-900 text-primary-100'>
     <div className=' flex flex-col md:flex-row  flex-shrink-0 container p-3 items-center  font-semibold  capitalize '>
       <div className='flex small-mobiles:flex-nowrap flex-wrap text-xs mobile:text-sm  gap-x-5 items-center w-full justify-around  flex-shrink-0'>
        <a href='/dashboard' className='flex gap-x-5 items-center'>
@@ -26,7 +26,7 @@ const Header = () => {
         <span>
          Cart
         </span>
-        <span className='bg-red-700 p-1 h-4 w-5 rounded-full text-white  absolute flex justify-center items-center text-[10px] font-normal -right-6 '> 
+        <span className='bg-red-700 p-1 h-4 w-5 rounded-full    absolute flex justify-center items-center text-[10px] font-normal -right-6 '> 
          {cartData?.count} 
         </span>
          </Link >

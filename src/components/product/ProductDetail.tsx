@@ -14,13 +14,13 @@ const ProductDetail = ( {id} : {id : number}) => {
   // @ts-ignore
 
   return (
-    <div className='group w-full  bg-gray-200 p-3 rounded-lg border-[1px] border-gray-100 shadow-md  flex flex-col gap-x-4'>
+    <div className='group w-full  p-3 rounded-lg border-[1px] border-primary-100 shadow-md  flex flex-col gap-x-4'>
     <div className='  rounded-md '>
         <Image src={productData?.thumbnail} alt={productData?.title ?? "product image "} width={500} height={500} className='  object-cover  object-center' />
     </div>
         
     <div className='text-lg font-medium flex flex-col gap-y-2 pt-3  '>
-        <div className='text-lg text-gray-800 font-bold '>
+        <div className='text-lg  font-bold '>
             <p className='   whitespace-nowrap group-hover:w-full group-hover:whitespace-normal  '>
             { productData?.title} 
             </p>

@@ -9,8 +9,8 @@ const CheckoutPaymentDetail = ({
         <div
           key={item.id}
           className={` flex gap-4 border rounded-md p-3 cursor-pointer ${
-            paymentOption ? paymentOption === item.id && "!bg-slate-300"
-            : paymentOptions?.results[0]?.id === item.id && "!bg-slate-300"
+            paymentOption ? paymentOption === item.id && "!bg-primary-800"
+            : paymentOptions?.results[0]?.id === item.id && "!bg-primary-800"
           }   `}
         >
           <input

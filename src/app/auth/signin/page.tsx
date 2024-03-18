@@ -68,7 +68,7 @@ const SignIn = () => {
   } = useForm();
   return (
     <div className="container ">
-      <div className="py-12 text-gray-800  ">
+      <div className="py-12 text-primary-800  ">
         <div>
           <Image
             className="mx-auto h-20 w-20"

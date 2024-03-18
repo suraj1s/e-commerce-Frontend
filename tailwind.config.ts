@@ -13,75 +13,19 @@ const config: Config = {
       colors: {
         background: "var(--background-primary)",
         primary: {
+          50: "var(--primary-50)",
           100: "var(--primary-100)",
+          200: "var(--primary-200)",
+          300: "var(--primary-300)",
+          400: "var(--primary-400)",
           500: "var(--primary-500)",
           600: "var(--primary-600)",
           700: "var(--primary-700)",
+          800: "var(--primary-800)",
+          900: "var(--primary-900)",
+          950: "var(--primary-950)",
         },
-        gray: {
-          25: "var(--gray-25)",
-          50: "var(--gray-50)",
-          100: "var(--gray-100)",
-          200: "var(--gray-200)",
-          300: "var(--gray-300)",
-          400: "var(--gray-400)",
-          500: "var(--gray-500)",
-          600: "var(--gray-600)",
-          700: "var(--gray-700)",
-          800: "var(--gray-800)",
-          900: "var(--gray-900)",
-        },
-        blue: {
-          light: {
-            50: "var(--blue-light-50)",
-            600: "var(--blue-light-600)",
-            700: "var(--blue-light-700)",
-          },
-          gray: {
-            600: "var(--blue-gray-600)",
-          },
-        },
-        success: {
-          50: "var(--success-50)",
-          500: "var(--success-500)",
-          600: "var(--success-600)",
-          700: "var(--success-700)",
-        },
-        error: {
-          50: "var(--error-50)",
-          600: "var(--error-600)",
-          500: "var(--error-500)",
-          700: "var(--error-700)",
-        },
-        brand: {
-          50: "var(--brand-50)",
-          100: "var(--brand-100)",
-          300: "var(--brand-300)",
-          400: "var(--brand-400)",
-          500: "var(--brand-500)",
-          600: "var(--brand-600)",
-          700: "var(--brand-700)",
-          800: "var(--brand-800)",
-        },
-        warning: {
-          50: "var(--warning-50)",
-          100: "var(--warning-100)",
-          600: "var(--warning-600)",
-          700: "var(--warning-700)",
-        },
-        orange: {
-          600: "var(--orange-600)",
-        },
-        pink: {
-          50: "var(--pink-50)",
-          600: "var(--pink-600)",
-          700: "var(--pink-700)",
-        },
-        indigo: {
-          50: "var(--indigo-50)",
-          700: "var(--indigo-700)",
-        },
-    
+
       },
 
       screens: {

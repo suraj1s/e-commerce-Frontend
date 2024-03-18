@@ -57,10 +57,10 @@ const Footers = () => {
   ]
   return (
     <div>
-      <div className='w-full bg-gray-800 '>
+      <div className='w-full bg-primary-800 '>
         <div className='container'>
         <Link href='/dashboard'>
-        <p className='font-bold text-gray-25 text-center py-2 '>
+        <p className='font-bold text-primary-25 text-center py-2 '>
 
         Back to top
         </p>
@@ -68,20 +68,20 @@ const Footers = () => {
 
         </div>
       </div>
-      <div className='bg-gray-700'>
-      <div className='text-gray-300 flex gap-x-20 flex-wrap container'>
+      <div className='bg-primary-700'>
+      <div className='text-primary-300 flex gap-x-20 flex-wrap container'>
       {
         footerSection.map((footer, index) => {
           return (
             <div key={index}>
-              <h1 className='font-bold text-gray-100 text-lg '>{footer.title}</h1>
+              <h1 className='font-bold text-primary-100 text-lg '>{footer.title}</h1>
               
               {
                 footer.items.map((item, index) => {
                   return (
                     <div key={index}>
                      <Link  href={item.link}>
-                      <p className='text-gray-200 '>{item.name}</p>
+                      <p className='text-primary-200 '>{item.name}</p>
                      </Link>
                     </div>
                   )

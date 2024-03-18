@@ -25,9 +25,9 @@ const CheckoutAddressDetail = ({
             key={index}
             className={` flex gap-4 border rounded-md p-3 cursor-pointer ${
               addressOption
-                ? addressOption === address.id && "!bg-slate-300"
+                ? addressOption === address.id && "!bg-primary-800"
                 : addressOptions?.results[0]?.id === address.id &&
-                  "!bg-slate-300"
+                  "!bg-primary-800"
             }   `}
           >
             <input

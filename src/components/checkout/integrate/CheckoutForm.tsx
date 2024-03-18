@@ -204,7 +204,7 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
       {inputfieldDetails?.map((item, index) =>
         item?.options ? (
           <div key={index} className={`${item?.className} space-y-[6px]`}>
-            <span className={` text-sm font-medium text-gray-700`}>
+            <span className={` text-sm font-medium text-primary-700`}>
               {item?.name}
               {item?.validation?.required && (
                 <span className="text-error-600">*</span>

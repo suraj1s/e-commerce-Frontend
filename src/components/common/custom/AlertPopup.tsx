@@ -44,7 +44,7 @@ const AlertPopup = ({
       <div className="hidden sm:block">{alertIcon}</div>
       <div>
         <div>
-          <h1 className="text-lg font-semibold  text-gray-900 ">{title}</h1>
+          <h1 className="text-lg font-semibold  text-primary-900 ">{title}</h1>
           <p className="mt-2 whitespace-normal text-sm font-normal">
             {description}
           </p>

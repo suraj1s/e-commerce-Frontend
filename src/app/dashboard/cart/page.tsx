@@ -21,11 +21,11 @@ const Cart = () => {
     0
   );
   return (
-    <div className="mx-auto max-w-7xl text-gray-900  font-bold ">
-      <h1 className="text-3xl border-b py-5 my-5 border-gray-200 ">Cart</h1>
+    <div className="mx-auto max-w-7xl   font-bold  ">
+      <h1 className="text-3xl border-b py-5 my-5 border-primary-200 ">Cart</h1>
       {cartData?.results?.map((item: any, index: any) => (
         <li key={index} className="flex py-6 gap-x-8">
-          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-primary-200">
             <Image
               src={item?.product?.thumbnail}
               alt={item?.product?.title}
@@ -67,13 +67,13 @@ const Cart = () => {
                 onCLick={() => {
                   deleteCart(item.id);
                 }}
-                className="!bg-transparent !text-primary-700 !w-fit !p-0 shadow-none"
+                className="!bg-transparent  !w-fit !p-0 shadow-none"
               />
             </div>
           </div>
         </li>
       ))}
-      <div className="border-t border-gray-200 py-6">
+      <div className="border-t border-primary-200 py-6">
         <div className="flex justify-between text-base ">
           <div>
             <p>Subtotal</p>
@@ -94,7 +94,8 @@ const Cart = () => {
         />
         <CustomButton
           title="continue shopping "
-          className="!bg-transparent !text-primary-700 !w-fit !p-0 shadow-none mx-auto"
+          className="!bg-transparent  !w-fit  shadow-none mx-auto"
+          path="/dashboard"
         />
       </div>
     </div>
