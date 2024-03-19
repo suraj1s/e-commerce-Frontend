@@ -5,6 +5,7 @@ import { useGetcartsQuery } from '@/redux/redux-slices/cart/cartApi'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+const Cookies = require('js-cookie')
 
 const Header = () => {
   const { data: cartData } = useGetcartsQuery({});
@@ -30,6 +31,12 @@ const Header = () => {
          {cartData?.count} 
         </span>
          </Link >
+         
+         <button onClick={()=> {
+            Cookies.remove('access_token')
+            Cookies.remove('refresh_token')
+            window.location.href = '/auth/signin'
+         }} className='ml-5 bg-primary-800 rounded-xl p-3 cursor-pointer hover:bg-primary-700'>logout</button>
       </div>
       <div className='block md:hidden w-full'>
       <Search  placeholder='Search Product '  />
