@@ -8,8 +8,8 @@ import {
 const Cookies = require("js-cookie");
 
 // export const backendurl = process.env.BACKEND_URL || "https://dummyjson.com/"
-export const backendurl =
-  process.env.BACKEND_URL || "http://localhost:8000/api/v1/";
+export const backendurl ="https://e-commerce-backend-w4w2.onrender.com/api/v1";
+// export const backendurl ="http://localhost:8000/api/v1";
 const baseQuery = fetchBaseQuery({
   baseUrl: backendurl,
   // here we are preparing the headers that need to be sent with each request
@@ -66,7 +66,7 @@ export const apiSlice = createApi({
     "address",
     "payment",
     "paymentOptions",
-    "order"
+    "order",
   ],
   endpoints: (builder) => ({}),
 });
