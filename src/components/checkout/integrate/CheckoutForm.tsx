@@ -201,9 +201,11 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
       onSubmit={handleSubmit(onSubmit)}
       className="grid w-full max-w-[655px] grid-cols-2 gap-[15px] relative  z-20"
     >
+      <div className=" col-span-2 w-full overflow-y-scroll px-6">
+
       {inputfieldDetails?.map((item, index) =>
         item?.options ? (
-          <div key={index} className={`${item?.className} space-y-[6px]`}>
+          <div key={index} className={`${item?.className} w-full space-y-[6px]`}>
             <span className={` text-sm font-medium `}>
               {item?.name}
               {item?.validation?.required && (
@@ -226,8 +228,8 @@ const CheckoutForm = ({closeModal} : CheckoutFormProps) => {
           </div>
         )
       )}
+      </div>
 
-      <div className="col-span-2"></div>
       <div className="col-span-2 my-2 flex items-center justify-end gap-3">
         <CustomButton
           onCLick={() => {
