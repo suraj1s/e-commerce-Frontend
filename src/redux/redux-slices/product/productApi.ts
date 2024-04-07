@@ -19,7 +19,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
         providesTags: ["product"]
       }), 
 
-      
+      createProduct: builder.mutation({
+        query: (product : any) => ({
+          url: `product/create/`,
+          method: "POST",
+          body: product
+        }),
+        invalidatesTags: ["product"]
+      }),
       searchProductTitle: builder.query({
         query: ({
           searchQuery = "",
@@ -48,5 +55,6 @@ export const productApiSlice = apiSlice.injectEndpoints({
 export const {
     useLazyGetProductsQuery,
     useGetProductQuery,
+    useCreateProductMutation,
     useLazySearchProductTitleQuery,
 } = productApiSlice

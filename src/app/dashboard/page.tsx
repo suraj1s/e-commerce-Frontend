@@ -1,17 +1,13 @@
-import ProductList from '@/components/product/ProductList'
-import React from 'react'
+import ProductList from "@/components/product/ProductList";
 
-const page = () => {
-  
+const Page = () => {
   return (
-    <div >
-
-      <div className='container'>
-
-      <ProductList />
+    <div>
+      <div className="container">
+        <ProductList />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

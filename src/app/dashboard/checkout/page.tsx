@@ -74,7 +74,7 @@ const Page = () => {
   return (
     <div >
       <div className="flex flex-col lg:flex-row space-x-10 space-y-8 pt-10  container  ">
-        <div className="flex  flex-col gap-5 h-fit lg:sticky top-16">
+        <div className="flex  flex-col gap-5 h-fit top-16">
           <CheckoutAddressDetail
             setAddressOption={setAddressOption}
             addressOption={addressOption}
