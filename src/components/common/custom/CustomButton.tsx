@@ -7,9 +7,9 @@ type Prop = {
   type?: "button" | "submit" | "reset";
   onCLick?: () => void;
   loading?: boolean;
+  disabled?: boolean;
   icon?: React.ReactNode;
   path?: string;
-  disabled?: boolean;
 };
 const CustomButton = ({
   title,
