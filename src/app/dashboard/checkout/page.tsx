@@ -37,10 +37,10 @@ const Page = () => {
 
   useEffect(() => {
     console.log(cartData, "cartData");
-    cartData?.results.length === 0 &&  router.push("/dashboard");
-  }, [cartData])
-  
-  const handelCheckout = async () => {
+    cartData?.results.length === 0 && router.push("/dashboard");
+  }, [cartData]);
+
+  const handelCheckout = async ({paymentMethod} : {paymentMethod : string})  => {
     const paymentData = {
       payment_status: "pending",
       payment_reference: "pending",
@@ -51,28 +51,33 @@ const Page = () => {
       ),
     };
     // console.log(paymentData, "paymentData");
+
     const payment = await mutationHandler(
       createPayment,
       { data: paymentData },
       () => {}
     );
-    if(!payment) return;
-    const checkoutData = {
-      address: addressOption,
-      payment: payment?.data?.id,
-      checkout_items: cartData?.results?.map((item: any) => item.id),
-    };
-    console.log(checkoutData, "checkoutData")
-    const checkout = await mutationHandler(
-      createCheckout,
-      { data: checkoutData },
-      () => {}
-    );
-    console.log(payment, checkout);
+    if (!payment) return;
+    if(paymentMethod === "cash"){
+      const checkoutData = {
+        address: addressOption,
+        payment: payment?.data?.id,
+        checkout_items: cartData?.results?.map((item: any) => item.id),
+      };
+      console.log(checkoutData, "checkoutData");
+      const checkout = await mutationHandler(
+        createCheckout,
+        { data: checkoutData },
+        () => {}
+      );
+      console.log(payment, checkout);
+    } else {
+      // handel khalti payment
+    }
   };
 
   return (
-    <div >
+    <div>
       <div className="flex flex-col lg:flex-row space-x-10 space-y-8 pt-10  container  ">
         <div className="flex  flex-col gap-5 h-fit top-16">
           <CheckoutAddressDetail
@@ -92,9 +97,11 @@ const Page = () => {
       </div>
 
       <CustomButton
-        title="Place Order"
+        title={
+          paymentOption && paymentOptions?.results?.filter(item => item.id === paymentOption )[0].payment_method === "Khalti" ? "Pay With Khalti" : "Pay on Delivery"
+        }
         className="!w-fit mx-auto my-10"
-        onCLick={handelCheckout}
+        onCLick={() => handelCheckout({paymentMethod : paymentOptions?.results?.filter(item => item.id === paymentOption )[0].payment_method ?? "cash"})}
       />
     </div>
   );
