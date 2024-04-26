@@ -40,11 +40,18 @@ const Page = () => {
     cartData?.results.length === 0 && router.push("/dashboard");
   }, [cartData]);
 
-  const handelCheckout = async ({paymentMethod} : {paymentMethod : string})  => {
+  const handelCheckout = async ({
+    paymentMethod,
+  }: {
+    paymentMethod: string;
+  }) => {
+    // send info about the cart to backend
+    // provide the success page redirecturl
     const paymentData = {
       payment_status: "pending",
       payment_reference: "pending",
       payment_method: paymentOption,
+      checkout_items: cartData?.results?.map((item: any) => item.id),
       payment_amount: cartData?.results?.reduce(
         (acc: number, item: any) => acc + item?.product?.price * item?.quantity,
         0
@@ -58,7 +65,7 @@ const Page = () => {
       () => {}
     );
     if (!payment) return;
-    if(paymentMethod === "cash"){
+    if (paymentMethod === "cash") {
       const checkoutData = {
         address: addressOption,
         payment: payment?.data?.id,
@@ -71,8 +78,21 @@ const Page = () => {
         () => {}
       );
       console.log(payment, checkout);
-    } else {
+    } else  if(paymentMethod === "Khalti"){
       // handel khalti payment
+      // redirect to khalti payment page
+      // after payment success handel payment in that page and perform checkout
+      const checkoutData = {
+        address: addressOption,
+        payment: payment?.data?.id,
+        checkout_items: cartData?.results?.map((item: any) => item.id),
+      };
+      console.log(checkoutData, "checkoutData");
+      const checkout = await mutationHandler(
+        createCheckout,
+        { data: checkoutData },
+        () => {}
+      );
     }
   };
 
@@ -98,10 +118,22 @@ const Page = () => {
 
       <CustomButton
         title={
-          paymentOption && paymentOptions?.results?.filter(item => item.id === paymentOption )[0].payment_method === "Khalti" ? "Pay With Khalti" : "Pay on Delivery"
+          paymentOption &&
+          paymentOptions?.results?.filter(
+            (item) => item.id === paymentOption
+          )[0].payment_method === "Khalti"
+            ? "Pay With Khalti"
+            : "Pay on Delivery"
         }
         className="!w-fit mx-auto my-10"
-        onCLick={() => handelCheckout({paymentMethod : paymentOptions?.results?.filter(item => item.id === paymentOption )[0].payment_method ?? "cash"})}
+        onCLick={() =>
+          handelCheckout({
+            paymentMethod:
+              paymentOptions?.results?.filter(
+                (item) => item.id === paymentOption
+              )[0].payment_method ?? "cash",
+          })
+        }
       />
     </div>
   );
