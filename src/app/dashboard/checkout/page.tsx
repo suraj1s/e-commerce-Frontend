@@ -82,17 +82,7 @@ const Page = () => {
       // handel khalti payment
       // redirect to khalti payment page
       // after payment success handel payment in that page and perform checkout
-      const checkoutData = {
-        address: addressOption,
-        payment: payment?.data?.id,
-        checkout_items: cartData?.results?.map((item: any) => item.id),
-      };
-      console.log(checkoutData, "checkoutData");
-      const checkout = await mutationHandler(
-        createCheckout,
-        { data: checkoutData },
-        () => {}
-      );
+      router.push(payment?.data?.payment_url);
     }
   };
 
