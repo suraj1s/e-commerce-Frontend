@@ -12,15 +12,27 @@ This is a modern e-commerce site built with Next.js, TypeScript, Tailwind CSS, a
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
+## Frontend (React):
 
-- **Shopping Cart**: Add, remove, and update items in the cart.
-- **Order Management**: Place and view orders.
-- **Search Functionality**: Search for products with debouncing to optimize performance.
-- **Token-Based Authentication**: Secure login and authentication using tokens.
-- **Responsive Design**: Built with Tailwind CSS for a responsive and modern UI.
+- Enhances user experience with integrated search functionality and infinite scroll, utilizing debouncing for search optimization and infinite scroll for enhanced performance.
+- Employs Redux Toolkit for streamlined state management, ensuring efficient data handling.
+- Utilizes JWT authentication tokens and cookies for secure access.
+- Utilizes RTK Query for optimized interaction with the backend API, enhancing performance through caching and efficient data fetching.
+- Implements proper cached data validation and revalidation techniques to ensure data accuracy.
+- Utilizes API interceptors to automatically obtain new access tokens using refresh tokens when they expire, ensuring uninterrupted user access and security.
+- Implements protected routes for enhanced security, ensuring that only authorized users can access certain endpoints.
+- Features custom components for seamless browsing, including post display, editing, and creation.
+- Developed with focus on code reusability, prioritizing responsiveness and ease of maintenance.
+
+## Backend (Django):
+
+- Utilizes Django REST Framework (DRF) with JWT authentication to ensure secure user access and authorization.
+- Implements CRUD operations for blog posts using a SQLite database for efficient data management.
+- Employs JWT authentication tokens and cookies for secure user access, enhancing authentication and authorization processes.
 
 ## Installation
+
+### frontend
 
 1. Clone the repository:
 
@@ -28,7 +40,6 @@ This is a modern e-commerce site built with Next.js, TypeScript, Tailwind CSS, a
 
    git clone https://github.com/suraj1s/e-commerce-Frontend  # frontend
 
-   https://github.com/suraj1s/e-commerce-backend  # backend
    cd e-commerce-Frontend
    ```
 
@@ -38,13 +49,24 @@ This is a modern e-commerce site built with Next.js, TypeScript, Tailwind CSS, a
    npm install
    ```
 
+   ### backend
+
+````bash
+git clone https://github.com/suraj1s/e-commerce-backend
+cd ./e-commerce-backend   # Navigate to the server directory
+python3 -m venv env  # Create a virtual environment
+source env/bin/activate  # Activate the virtual environment
+pip install -r requirements.txt  # Install required Python packages
+python manage.py makemigrations  # Create database migrations
+python manage.py migrate  # Apply migrations to the database
+python manage.py runserver  # Run the Django server
+
 ## Usage
 
 1. Run the development server:
-
    ```bash
    npm run dev
-   ```
+````
 
 2. Open your browser and go to `http://localhost:3000` to see the app in action.
 
